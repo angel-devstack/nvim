@@ -226,26 +226,118 @@ brew install jesseduffield/lazygit/lazygit
 - **JSON/YAML**: Integrated with SchemaStore for automatic schema validation
 - All servers use common `on_attach` function for unified keybindings
 
+## Testing with Neotest
+
+This configuration includes comprehensive testing support via neotest with DAP integration:
+
+### Supported Languages
+
+| Language | Adapter | Test Framework | DAP Debug |
+|----------|---------|----------------|------------|
+| Ruby | neotest-rspec | RSpec | ✅ |
+| Python | neotest-python | pytest | ✅ |
+| JS/TS | neotest-jest | Jest | ✅ |
+| Rust | neotest-rust | cargo test | ✅ |
+
+### Test Commands
+
+- `<leader>tt` — run current test file
+- `<leader>tr` — run nearest test under cursor  
+- `<leader>ta` — run all tests in project
+- `<leader>tS` — debug nearest test with DAP
+- `<leader>to` — show test output
+- `<leader>ts` — toggle test summary panel
+
+### Requirements by Language
+
+**Ruby:**
+```bash
+# RSpec should be in Gemfile
+bundle exec rspec --version
+```
+
+**Python:**
+```bash
+pip install pytest
+```
+
+**JavaScript/TypeScript:**
+```bash
+npm install --save-dev jest
+```
+
+**Rust:**
+```bash
+cargo test  # built-in
+```
+
+## Local LLM Setup (gen.nvim)
+
+The configuration includes `gen.nvim` for local LLM integration via Ollama.
+
+### Recommended Models
+
+- **General purpose**: `llama3:8b`
+- **Code generation**: `deepseek-coder-v2:16b-lite`
+
+### Environment Variables
+
+Add to your shell config (`~/.zshrc`, `~/.bashrc`):
+
+```bash
+export OLLAMA_SERVER="127.0.0.1"
+export OLLAMA_PORT="11434"
+export OLLAMA_HOST="${OLLAMA_SERVER}:${OLLAMA_PORT}"
+export LLM_MODEL="llama3:8b"
+```
+
+### Usage
+
+- `<leader>g1` — generate via LLM
+- `<leader>g2` — open Gen chat session
+
+### Setup Ollama
+
+```bash
+# Install Ollama
+brew install ollama
+
+# Start server
+ollama serve
+
+# Pull model
+ollama pull llama3:8b
+```
+
 ## Troubleshooting
 
-### General Health Checks
+**For detailed troubleshooting, see [`TROUBLESHOOTING.md`](./TROUBLESHOOTING.md)**
+
+Quick diagnostics:
+
 ```vim
 :checkhealth          " comprehensive check
 :checkhealth mason    " verify Mason tools
-:checkhealth lsp      " LSP configuration
+:checkhealth lsp      " LSP configuration  
+:LspInfo              " active LSP servers
+:Lazy                 " plugin status
 ```
 
-### Common Issues
-- **LSP not starting**: Verify server installed via `:Mason`, check `:LspInfo`
-- **Formatter not working**: Check tool installed via `:Mason`, verify format-on-save timeout (500ms default)
-- **DAP debugger not working**: Verify adapters with `which rdbg`, `which debugpy`, `which node`
-- **Slow startup**: Check `:Lazy profile` for plugin load times
-- **Tests not running**: Ensure test framework installed (jest, pytest, RSpec) and neotest adapter loaded
+### Common Quick Fixes
 
-### File Locations
+- **LSP not starting**: `:Mason` → verify server installed, check `:LspInfo`
+- **LSP "not executable" warning**: Add Mason bin to PATH (see TROUBLESHOOTING.md)
+- **Formatter not working**: `:Mason` → check tool installed
+- **DAP not working**: Verify adapters with `which rdbg`, `which debugpy`, `which node`
+- **Slow startup**: `:Lazy profile` to identify slow plugins
+- **Tests not running**: Ensure test framework installed (jest, pytest, RSpec)
+
+### Important Paths
+
 - Neovim config: `~/.config/nvim` (or `$XDG_CONFIG_HOME/nvim`)
 - Lazy.nvim data: `~/.local/share/nvim/lazy`
 - Mason installs: `~/.local/share/nvim/mason`
+- Mason bin (add to PATH): `~/.local/share/nvim/mason/bin`
 - Ruby LSP cache: `.ruby-lsp/` in project root
 
 ## Notes for Warp
