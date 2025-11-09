@@ -8,7 +8,7 @@
 || Phase 2: Keymap Registry | ✅ Done | `phase-2/keymap-registry` | 7/7 | Merged |
 || Phase 3: DAP Consolidation | ✅ Done | `phase-3/dap-consolidation` | 8/8 | Merged |
 || Phase 4: Directory Restructure | ✅ Done | `phase-4/directory-restructure` | 16/16 | Merged |
-| Phase 5: API Updates | ⏳ Pending | `phase-5/api-updates` | 0/? | Waiting |
+|| Phase 5: API Updates | ✅ Done | `phase-5/api-updates` | 3/3 | Merged |
 | Phase 6: Final Documentation | ⏳ Pending | `phase-6/final-documentation` | 0/? | Waiting |
 
 **Legend:** ✅ Done | 🔄 In Progress | ⏳ Pending | ❌ Blocked
@@ -106,7 +106,7 @@
 ## 📝 PHASE 5: API Updates
 
 **Branch:** `phase-5/api-updates`
-**Status:** ⏳ Pending
+**Status:** ✅ Done (Merged to main)
 
 ### Tasks & Commits
 
@@ -178,7 +178,7 @@
 || Phase 3 | ✅ Done | 2025-11-09 | 35dc561 | 8 commits, DAP functional |
 | Phase 4 | ⏳ Pending | - | - | - |
 || Phase 4 | ✅ Done | 2025-11-09 | cfdc7de | 16 commits, structure reorganized |
-| Phase 6 | ⏳ Pending | - | - | - |
+|| Phase 5 | ✅ Done | 2025-11-09 | ef6d0f6 | 3 commits, APIs modernized |
 
 ---
 
