@@ -156,25 +156,67 @@ return {
       tsserver = {}, -- para JS/TS
     }
 
+    -- =========================================================================
+    -- 🔧 Setup LSP servers with backward compatibility
+    -- =========================================================================
+    local lspconfig = require("lspconfig")
+    
+    -- Check if using new API (Neovim 0.11+) or old API (0.10 and below)
+    local use_new_api = vim.lsp.config ~= nil
+    
     for name, config in pairs(servers) do
       config.capabilities = capabilities
       config.on_attach = config.on_attach or on_attach
-      vim.lsp.config(name, config)
-      vim.lsp.enable(name)
+      
+      if use_new_api then
+        -- Neovim 0.11+ new API
+        vim.lsp.config(name, config)
+        vim.lsp.enable(name)
+      else
+        -- Neovim 0.10 and below (legacy API)
+        lspconfig[name].setup(config)
+      end
     end
 
     -- =========================================================================
-    -- 🩵 Signos visuales
+    -- 🩵 Diagnostic signs with modern API (backward compatible)
     -- =========================================================================
     local signs = {
-      Error = " ",
-      Warn = " ",
-      Hint = "󰠠 ",
-      Info = " ",
+      Error = " ",
+      Warn = " ",
+      Hint = "󰁠 ",
+      Info = " ",
     }
-    for type, icon in pairs(signs) do
-      local hl = "DiagnosticSign" .. type
-      vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+    
+    -- Use modern diagnostic.config if available (Neovim 0.10+)
+    if vim.diagnostic.config then
+      local sign_names = {}
+      for type, icon in pairs(signs) do
+        local hl = "DiagnosticSign" .. type
+        sign_names[vim.diagnostic.severity[type:upper()]] = hl
+        -- Still define signs for backward compatibility
+        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+      end
+      
+      vim.diagnostic.config({
+        signs = { text = signs },
+        virtual_text = true,
+        update_in_insert = false,
+        underline = true,
+        severity_sort = true,
+        float = {
+          border = "rounded",
+          source = "always",
+          header = "",
+          prefix = "",
+        },
+      })
+    else
+      -- Fallback for older Neovim versions
+      for type, icon in pairs(signs) do
+        local hl = "DiagnosticSign" .. type
+        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+      end
     end
   end,
 }
