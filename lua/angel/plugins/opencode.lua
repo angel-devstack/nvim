@@ -33,8 +33,13 @@ return {
     vim.keymap.set("n", "<S-C-d>", function()
       require("opencode").command("session.half.page.down")
     end, { desc = "opencode half page down" })
-    -- You may want these if you stick with the opinionated "<C-a>" and "<C-x>" above — otherwise consider "<leader>o".
-    vim.keymap.set("n", "+", "<C-a>", { desc = "Increment", noremap = true })
-    vim.keymap.set("n", "-", "<C-x>", { desc = "Decrement", noremap = true })
+    -- NOTE: Opencode uses <C-a> and <C-x> which shadows Vim's increment/decrement.
+    -- The plugin suggests remapping + and - as alternatives, but we keep the
+    -- standard Vim behavior. Use <leader>+ and <leader>- (from core/keymaps.lua)
+    -- if you need increment/decrement while using opencode.
+    -- 
+    -- Uncomment these if you prefer + and - for increment/decrement:
+    -- vim.keymap.set("n", "+", "<C-a>", { desc = "Increment", noremap = true })
+    -- vim.keymap.set("n", "-", "<C-x>", { desc = "Decrement", noremap = true })
   end,
 }
