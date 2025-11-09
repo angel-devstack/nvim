@@ -160,14 +160,14 @@ return {
     -- 🔧 Setup LSP servers with backward compatibility
     -- =========================================================================
     local lspconfig = require("lspconfig")
-    
+
     -- Check if using new API (Neovim 0.11+) or old API (0.10 and below)
     local use_new_api = vim.lsp.config ~= nil
-    
+
     for name, config in pairs(servers) do
       config.capabilities = capabilities
       config.on_attach = config.on_attach or on_attach
-      
+
       if use_new_api then
         -- Neovim 0.11+ new API
         vim.lsp.config(name, config)
@@ -182,12 +182,12 @@ return {
     -- 🩵 Diagnostic signs with modern API (backward compatible)
     -- =========================================================================
     local signs = {
-      Error = " ",
-      Warn = " ",
-      Hint = "󰁠 ",
-      Info = " ",
+      Error = "🔴",
+      Warn = "🟡",
+      Hint = "🔵",
+      Info = "🟢",
     }
-    
+
     -- Use modern diagnostic.config if available (Neovim 0.10+)
     if vim.diagnostic.config then
       local sign_names = {}
@@ -197,7 +197,7 @@ return {
         -- Still define signs for backward compatibility
         vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
       end
-      
+
       vim.diagnostic.config({
         signs = { text = signs },
         virtual_text = true,
