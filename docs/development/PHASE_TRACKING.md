@@ -7,7 +7,7 @@
 || Phase 1: Immediate Cleanup | ✅ Done | `phase-1/immediate-cleanup` | 10/10 | Merged |
 || Phase 2: Keymap Registry | ✅ Done | `phase-2/keymap-registry` | 7/7 | Merged |
 || Phase 3: DAP Consolidation | ✅ Done | `phase-3/dap-consolidation` | 8/8 | Merged |
-| Phase 4: Directory Restructure | ⏳ Pending | `phase-4/directory-restructure` | 0/? | Waiting |
+|| Phase 4: Directory Restructure | ✅ Done | `phase-4/directory-restructure` | 16/16 | Merged |
 | Phase 5: API Updates | ⏳ Pending | `phase-5/api-updates` | 0/? | Waiting |
 | Phase 6: Final Documentation | ⏳ Pending | `phase-6/final-documentation` | 0/? | Waiting |
 
@@ -84,7 +84,7 @@
 **Branch:** `phase-4/directory-restructure`
 **Status:** ⏳ Pending
 
-### Tasks & Commits
+**Status:** ✅ Done (Merged to main)
 
 | # | Task | Status | Commit | Files Changed | Tested |
 |---|------|--------|--------|---------------|--------|
@@ -177,7 +177,7 @@
 | Phase 2 | ✅ Done | 2025-11-09 | [merge commit] | 7 commits, all conflicts resolved |
 || Phase 3 | ✅ Done | 2025-11-09 | 35dc561 | 8 commits, DAP functional |
 | Phase 4 | ⏳ Pending | - | - | - |
-| Phase 5 | ⏳ Pending | - | - | - |
+|| Phase 4 | ✅ Done | 2025-11-09 | cfdc7de | 16 commits, structure reorganized |
 | Phase 6 | ⏳ Pending | - | - | - |
 
 ---
