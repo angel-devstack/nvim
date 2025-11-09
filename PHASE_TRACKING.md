@@ -159,7 +159,7 @@
 
 | Issue | Phase | Description | Resolution | Status |
 |-------|-------|-------------|------------|--------|
-| - | - | - | - | - |
+| lua-language-server not executable | Phase 1 Testing | Mason shows lua-language-server installed but :LspInfo shows "not executable" warning. LSP config is correct, issue is pre-existing PATH problem. | Document in TROUBLESHOOTING.md. Server works but needs Mason bin path in shell PATH or symlink. | 📝 Documented |
 
 ---
 
