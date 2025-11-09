@@ -1,12 +1,17 @@
 return {
   "kaka-ruto/nvim-ruby-debugger",
+  ft = { "ruby" }, -- Load on Ruby files
   dependencies = {
     "mfussenegger/nvim-dap",
-    "rcarriga/nvim-dap-ui",
-    "theHamsta/nvim-dap-virtual-text",
+    "nvim-neotest/nvim-nio",
   },
   config = function()
-    local nvim_ruby_debugger = require("nvim-ruby-debugger")
+    local ok, nvim_ruby_debugger = pcall(require, "nvim-ruby-debugger")
+    if not ok then
+      vim.notify("nvim-ruby-debugger not loaded", vim.log.levels.ERROR)
+      return
+    end
+    
     nvim_ruby_debugger.setup({
       rails_port = 38698,
       worker_port = 38699,
