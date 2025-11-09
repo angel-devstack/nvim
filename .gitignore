@@ -1,0 +1,26 @@
+# Archivos de Neovim generados automáticamente
+*.swp
+*.swo
+*.bak
+*.tmp
+
+# Directorios de caché de plugins
+/lazy-lock.json
+/site
+/plugin/packer_compiled.lua
+
+# Archivos de LSP o Linter temporales
+*.log
+*.out
+
+# Archivos de copilot o completions
+/copilot.*
+/.autosave.json
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+
+.env
+*.env
