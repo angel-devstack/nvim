@@ -179,17 +179,44 @@ return {
     end
 
     -- =========================================================================
-    -- 🩵 Signos visuales
+    -- 🩵 Diagnostic signs with modern API (backward compatible)
     -- =========================================================================
     local signs = {
-      Error = " ",
-      Warn = " ",
-      Hint = "󰠠 ",
-      Info = " ",
+      Error = " ",
+      Warn = " ",
+      Hint = "󰁠 ",
+      Info = " ",
     }
-    for type, icon in pairs(signs) do
-      local hl = "DiagnosticSign" .. type
-      vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+    
+    -- Use modern diagnostic.config if available (Neovim 0.10+)
+    if vim.diagnostic.config then
+      local sign_names = {}
+      for type, icon in pairs(signs) do
+        local hl = "DiagnosticSign" .. type
+        sign_names[vim.diagnostic.severity[type:upper()]] = hl
+        -- Still define signs for backward compatibility
+        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+      end
+      
+      vim.diagnostic.config({
+        signs = { text = signs },
+        virtual_text = true,
+        update_in_insert = false,
+        underline = true,
+        severity_sort = true,
+        float = {
+          border = "rounded",
+          source = "always",
+          header = "",
+          prefix = "",
+        },
+      })
+    else
+      -- Fallback for older Neovim versions
+      for type, icon in pairs(signs) do
+        local hl = "DiagnosticSign" .. type
+        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+      end
     end
   end,
 }
