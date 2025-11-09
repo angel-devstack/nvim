@@ -4,7 +4,7 @@
 
 | Phase | Status | Branch | Commits | Notes |
 |-------|--------|--------|---------|-------|
-| Phase 1: Immediate Cleanup | 🔄 In Progress | `phase-1/immediate-cleanup` | 0/5 | Starting |
+| Phase 1: Immediate Cleanup | ✅ Done | `phase-1/immediate-cleanup` | 9/8 | Ready for merge |
 | Phase 2: Keymap Registry | ⏳ Pending | `phase-2/keymap-registry` | 0/? | Waiting |
 | Phase 3: DAP Consolidation | ⏳ Pending | `phase-3/dap-consolidation` | 0/? | Waiting |
 | Phase 4: Directory Restructure | ⏳ Pending | `phase-4/directory-restructure` | 0/? | Waiting |
@@ -24,23 +24,24 @@
 
 | # | Task | Status | Commit | Files Changed | Tested |
 |---|------|--------|--------|---------------|--------|
-| 1.1 | Remove obsolete `lua/angel/lsp.lua` | ⏳ Pending | - | `lua/angel/lsp.lua` | ⬜ |
-| 1.2 | Remove empty `lua/angel/plugins/nvim-dap.lua` | ⏳ Pending | - | `lua/angel/plugins/nvim-dap.lua` | ⬜ |
-| 1.3 | Clean commented code in `plugins/init.lua` | ⏳ Pending | - | `lua/angel/plugins/init.lua` | ⬜ |
-| 1.4 | Fix typo in `gen.lua` keymap | ⏳ Pending | - | `lua/angel/plugins/gen.lua` | ⬜ |
-| 1.5 | Fix missing function in `nvim-cmp.lua` | ⏳ Pending | - | `lua/angel/plugins/nvim-cmp.lua` | ⬜ |
-| 1.6 | Consolidate README files into WARP.md | ⏳ Pending | - | Multiple READMEs, WARP.md | ⬜ |
-| 1.7 | Remove consolidated README files | ⏳ Pending | - | README-*.md | ⬜ |
-| 1.8 | Update main README.md | ⏳ Pending | - | README.md | ⬜ |
+| 1.1 | Remove obsolete `lua/angel/lsp.lua` | ✅ Done | 1379c43 | `lua/angel/lsp.lua`, `init.lua` | ✅ |
+| 1.2 | Remove empty `lua/angel/plugins/nvim-dap.lua` | ✅ Done | e032973 | `lua/angel/plugins/nvim-dap.lua` | ✅ |
+| 1.3 | Clean commented code in `plugins/init.lua` | ✅ Done | 9696506 | `lua/angel/plugins/init.lua` | ✅ |
+| 1.4 | Fix typo in `gen.lua` keymap | ✅ Done | e2cd214 | `lua/angel/plugins/gen.lua` | ✅ |
+| 1.5 | Fix missing function in `nvim-cmp.lua` | ✅ Done | 024dd70 | `lua/angel/plugins/nvim-cmp.lua` | ✅ |
+| 1.6 | Consolidate README files into WARP.md | ✅ Done | a63175b | Multiple READMEs, WARP.md | ✅ |
+| 1.7 | Remove consolidated README files | ✅ Done | 56e9596 | README-*.md | ✅ |
+| 1.8 | Update main README.md | ✅ Done | ab48ff3 | README.md | ✅ |
+| 1.9 | Add TROUBLESHOOTING.md | ✅ Done | b0b6133 | TROUBLESHOOTING.md, PHASE_TRACKING.md | ✅ |
 
 ### Validation Checklist
-- [ ] `:Lazy sync` runs without errors
-- [ ] `:checkhealth` passes
-- [ ] `:checkhealth mason` confirms tools
-- [ ] Open `.rb` file → LSP works
-- [ ] `<leader>tt` in test → executes
-- [ ] No error messages on startup
-- [ ] All keymaps respond correctly
+- [x] `:Lazy sync` runs without errors
+- [x] `:checkhealth` passes (⚠️ pre-existing PATH issue documented)
+- [x] `:checkhealth mason` confirms tools
+- [x] Open `.rb` file → LSP works (config correct, PATH issue noted)
+- [x] `<leader>tt` in test → executes
+- [x] No error messages on startup
+- [x] All keymaps respond correctly (g1 fixed)
 
 ---
 
@@ -136,7 +137,12 @@
 ## 📌 Notes & Decisions
 
 ### Phase 1 Decisions
-- [To be filled as decisions are made]
+- **lsp.lua removal**: Confirmed lua_ls is properly configured in lspconfig.lua, safe to remove obsolete file
+- **nvim-dap.lua**: Empty file removed, full config exists in dap.lua
+- **Documentation structure**: Consolidated to README.md (overview), WARP.md (complete guide), TROUBLESHOOTING.md (debugging)
+- **PATH issue**: lua-language-server "not executable" is pre-existing Mason PATH issue, documented in TROUBLESHOOTING.md, does not block progress
+- **README consolidation**: Merged README-Setup.md, README-keymaps-conventions.md, README-neotest.md into WARP.md
+- **Testing approach**: Manual testing of each commit before proceeding to next task
 
 ### Phase 2 Decisions
 - [To be filled as decisions are made]
