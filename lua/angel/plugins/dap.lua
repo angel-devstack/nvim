@@ -53,18 +53,8 @@ return {
       })
     end
 
-    -- Carga adaptadores específicos por lenguaje
-    local dap_configs = {
-      "angel.plugins.dap.ruby",
-      "angel.plugins.dap.python",
-      "angel.plugins.dap.node",
-      "angel.plugins.dap.rust",
-    }
-    for _, module in ipairs(dap_configs) do
-      local ok, _ = pcall(require, module)
-      if not ok then
-        vim.notify(("DAP: módulo '%s' no cargado"):format(module), vim.log.levels.WARN)
-      end
-    end
+    -- NOTE: Language-specific adapters are loaded via lua/angel/plugins/dap/init.lua
+    -- which imports: ruby.lua, python.lua, node.lua, rust.lua
+    -- No need to manually require them here - lazy.nvim handles it through the import system
   end,
 }
