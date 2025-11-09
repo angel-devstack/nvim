@@ -17,11 +17,12 @@ keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" })
 keymap.set("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" })
 keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" })
 
-keymap.set("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open new tab" })
-keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" })
-keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" })
-keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" })
-keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" })
+-- Tab management (moved to <leader>wt* to avoid conflict with Testing)
+keymap.set("n", "<leader>wto", "<cmd>tabnew<CR>", { desc = "Open new tab" })
+keymap.set("n", "<leader>wtx", "<cmd>tabclose<CR>", { desc = "Close current tab" })
+keymap.set("n", "<leader>wtn", "<cmd>tabn<CR>", { desc = "Go to next tab" })
+keymap.set("n", "<leader>wtp", "<cmd>tabp<CR>", { desc = "Go to previous tab" })
+keymap.set("n", "<leader>wtf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" })
 
 -- AI Assistant
 -- keymap.set({ "n", "v" }, "<leader>ge", ":Gen<CR>", { desc = "Open AI Assistant Menu" })

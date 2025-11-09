@@ -5,7 +5,7 @@
 | Phase | Status | Branch | Commits | Notes |
 |-------|--------|--------|---------|-------|
 | Phase 1: Immediate Cleanup | ✅ Done | `phase-1/immediate-cleanup` | 9/8 | Ready for merge |
-| Phase 2: Keymap Registry | ⏳ Pending | `phase-2/keymap-registry` | 0/? | Waiting |
+| Phase 2: Keymap Registry | ✅ Done | `phase-2/keymap-registry` | 6/6 | Ready for merge |
 | Phase 3: DAP Consolidation | ⏳ Pending | `phase-3/dap-consolidation` | 0/? | Waiting |
 | Phase 4: Directory Restructure | ⏳ Pending | `phase-4/directory-restructure` | 0/? | Waiting |
 | Phase 5: API Updates | ⏳ Pending | `phase-5/api-updates` | 0/? | Waiting |
@@ -54,12 +54,12 @@
 
 | # | Task | Status | Commit | Files Changed | Tested |
 |---|------|--------|--------|---------------|--------|
-| 2.1 | Create KEYMAP_REGISTRY.md | ⏳ Pending | - | KEYMAP_REGISTRY.md | ⬜ |
-| 2.2 | Update core/keymaps.lua (tabs → wt*) | ⏳ Pending | - | lua/angel/core/keymaps.lua | ⬜ |
-| 2.3 | Update tabular.lua (ta* → a*) | ⏳ Pending | - | lua/angel/plugins/tabular.lua | ⬜ |
-| 2.4 | Update vim-maximizer.lua (sm → wsm) | ⏳ Pending | - | lua/angel/plugins/vim-maximizer.lua | ⬜ |
-| 2.5 | Review opencode.lua keymaps | ⏳ Pending | - | lua/angel/plugins/opencode.lua | ⬜ |
-| 2.6 | Update which-key.lua groups | ⏳ Pending | - | lua/angel/plugins/which-key.lua | ⬜ |
+| 2.1 | Create KEYMAP_REGISTRY.md | ✅ Done | 38182c2 | KEYMAP_REGISTRY.md | ✅ |
+| 2.2 | Update core/keymaps.lua (tabs → wt*) | ✅ Done | 8bd259d | lua/angel/core/keymaps.lua | ✅ |
+| 2.3 | Update tabular.lua (ta* → a*) | ✅ Done | f7538f9 | lua/angel/plugins/tabular.lua | ✅ |
+| 2.4 | Update vim-maximizer.lua (sm → wsm) | ✅ Done | 92ad4f7 | lua/angel/plugins/vim-maximizer.lua | ✅ |
+| 2.5 | Review opencode.lua keymaps | ✅ Done | e0e25a1 | lua/angel/plugins/opencode.lua | ✅ |
+| 2.6 | Update which-key.lua groups | ✅ Done | [latest] | lua/angel/plugins/which-key.lua | ✅ |
 
 ---
 
