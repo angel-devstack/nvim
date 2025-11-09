@@ -3,7 +3,7 @@ return {
   event = "VeryLazy",
   cmd = { "Gen", "GenChat", "GenSelectModel" },
   keys = {
-    { "<leader>g1>", "<cmd>Gen<CR>", desc = "Generate via LLM" },
+    { "<leader>g1", "<cmd>Gen<CR>", desc = "Generate via LLM" },
     { "<leader>g2", "<cmd>GenChat<CR>", desc = "Open Gen chat session" },
   },
   opts = {
