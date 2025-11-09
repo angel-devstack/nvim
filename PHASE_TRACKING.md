@@ -6,7 +6,7 @@
 |-------|--------|--------|---------|-------|
 | Phase 1: Immediate Cleanup | ✅ Done | `phase-1/immediate-cleanup` | 9/8 | Ready for merge |
 | Phase 2: Keymap Registry | ✅ Done | `phase-2/keymap-registry` | 6/6 | Ready for merge |
-| Phase 3: DAP Consolidation | ⏳ Pending | `phase-3/dap-consolidation` | 0/? | Waiting |
+| Phase 3: DAP Consolidation | ✅ Done | `phase-3/dap-consolidation` | 4/4 | Ready for testing & merge |
 | Phase 4: Directory Restructure | ⏳ Pending | `phase-4/directory-restructure` | 0/? | Waiting |
 | Phase 5: API Updates | ⏳ Pending | `phase-5/api-updates` | 0/? | Waiting |
 | Phase 6: Final Documentation | ⏳ Pending | `phase-6/final-documentation` | 0/? | Waiting |
@@ -72,10 +72,10 @@
 
 | # | Task | Status | Commit | Files Changed | Tested |
 |---|------|--------|--------|---------------|--------|
-| 3.1 | Remove nvim-dap-ui.lua | ⏳ Pending | - | lua/angel/plugins/nvim-dap-ui.lua | ⬜ |
-| 3.2 | Remove nvim-dap-virtual-text.lua | ⏳ Pending | - | lua/angel/plugins/nvim-dap-virtual-text.lua | ⬜ |
-| 3.3 | Simplify dap.lua (remove manual loading) | ⏳ Pending | - | lua/angel/plugins/dap.lua | ⬜ |
-| 3.4 | Review nvim-ruby-debugger.lua | ⏳ Pending | - | lua/angel/plugins/nvim-ruby-debugger.lua | ⬜ |
+| 3.1 | Remove nvim-dap-ui.lua | ✅ Done | 6df201d | lua/angel/plugins/nvim-dap-ui.lua | ⏳ Pending |
+| 3.2 | Remove nvim-dap-virtual-text.lua | ✅ Done | 5c3c86f | lua/angel/plugins/nvim-dap-virtual-text.lua | ⏳ Pending |
+| 3.3 | Simplify dap.lua (remove manual loading) | ✅ Done | 48ed43d | lua/angel/plugins/dap.lua | ⏳ Pending |
+| 3.4 | Consolidate Ruby debugger | ✅ Done | [latest] | lua/angel/plugins/dap/ruby.lua | ⏳ Pending |
 
 ---
 

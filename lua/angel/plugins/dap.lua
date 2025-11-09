@@ -5,11 +5,15 @@ return {
   "mfussenegger/nvim-dap",
   event = { "BufReadPre", "BufNewFile" },
   dependencies = {
+    { "nvim-neotest/nvim-nio" },
     { "rcarriga/nvim-dap-ui", config = true },
     { "theHamsta/nvim-dap-virtual-text", config = true },
   },
   config = function()
     local dap = require("dap")
+
+    -- Suppress deprecation warning for diagnostic signs (upstream issue)
+    vim.g.dap_signs_deprecated = false
 
     -- Teclado / mapeos comunes
     vim.keymap.set("n", "<F5>", dap.continue, { desc = "DAP Continue" })
@@ -53,17 +57,22 @@ return {
       })
     end
 
-    -- Carga adaptadores específicos por lenguaje
-    local dap_configs = {
-      "angel.plugins.dap.ruby",
-      "angel.plugins.dap.python",
-      "angel.plugins.dap.node",
-      "angel.plugins.dap.rust",
-    }
-    for _, module in ipairs(dap_configs) do
-      local ok, _ = pcall(require, module)
-      if not ok then
-        vim.notify(("DAP: módulo '%s' no cargado"):format(module), vim.log.levels.WARN)
+    -- NOTE: Language-specific adapters are loaded via lua/angel/plugins/dap/init.lua
+    -- which imports: python.lua, node.lua, rust.lua
+    -- Ruby debugging is handled by nvim-ruby-debugger plugin
+    
+    -- Fallback Ruby adapter for plain files (if nvim-ruby-debugger not loaded)
+    if not dap.adapters.ruby then
+      dap.adapters.ruby = function(callback, config)
+        callback({
+          type = "server",
+          host = "127.0.0.1",
+          port = "${port}",
+          executable = {
+            command = "bundle",
+            args = { "exec", "rdbg", "-n", "--open", "--port", "${port}", "-c", "--", config.command, config.script },
+          },
+        })
       end
     end
   end,
