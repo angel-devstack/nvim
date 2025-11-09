@@ -1,5 +1,8 @@
 vim.scriptencoding = "utf-8"
 
+-- Suppress deprecation warnings (Neovim 0.10+ API changes)
+vim.deprecate = function() end
+
 local opt = vim.opt
 
 opt.encoding = "utf-8"
