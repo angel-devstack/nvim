@@ -156,11 +156,26 @@ return {
       tsserver = {}, -- para JS/TS
     }
 
+    -- =========================================================================
+    -- 🔧 Setup LSP servers with backward compatibility
+    -- =========================================================================
+    local lspconfig = require("lspconfig")
+    
+    -- Check if using new API (Neovim 0.11+) or old API (0.10 and below)
+    local use_new_api = vim.lsp.config ~= nil
+    
     for name, config in pairs(servers) do
       config.capabilities = capabilities
       config.on_attach = config.on_attach or on_attach
-      vim.lsp.config(name, config)
-      vim.lsp.enable(name)
+      
+      if use_new_api then
+        -- Neovim 0.11+ new API
+        vim.lsp.config(name, config)
+        vim.lsp.enable(name)
+      else
+        -- Neovim 0.10 and below (legacy API)
+        lspconfig[name].setup(config)
+      end
     end
 
     -- =========================================================================
