@@ -5,7 +5,7 @@
 | Phase | Status | Branch | Commits | Notes |
 |-------|--------|--------|---------|-------|
 | Phase 1: Immediate Cleanup | ✅ Done | `phase-1/immediate-cleanup` | 9/8 | Ready for merge |
-| Phase 2: Keymap Registry | ⏳ Pending | `phase-2/keymap-registry` | 0/? | Waiting |
+| Phase 2: Keymap Registry | 🔄 In Progress | `phase-2/keymap-registry` | 0/6 | Starting |
 | Phase 3: DAP Consolidation | ⏳ Pending | `phase-3/dap-consolidation` | 0/? | Waiting |
 | Phase 4: Directory Restructure | ⏳ Pending | `phase-4/directory-restructure` | 0/? | Waiting |
 | Phase 5: API Updates | ⏳ Pending | `phase-5/api-updates` | 0/? | Waiting |
