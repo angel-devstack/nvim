@@ -1,16 +1,14 @@
-# Nvim setup 2024
+# Neovim Configuration
 
-https://www.youtube.com/watch?v=6pAG3BHurdM
-https://github.com/josean-dev/dev-environment-files
+This is a modular Neovim setup built on lazy.nvim with LSP, DAP, testing, and Git integrations.
 
-# LazyGit setup
+- For usage, commands, architecture, and setup see: `WARP.md`
+- For debugging problems see: `TROUBLESHOOTING.md`
 
-https://www.youtube.com/watch?v=Ihg37znaiBo
+Quick dependency note:
+- `brew install jesseduffield/lazygit/lazygit` (for LazyGit)
 
-## Dependencies:
-
-- `brew install jesseduffield/lazygit/lazygit`
-
+---
 
 # Debug y Testeo en Neovim con DAP 🔍
 
