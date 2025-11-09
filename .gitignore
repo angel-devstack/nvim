@@ -13,6 +13,9 @@
 *.log
 *.out
 
+# Ruby bundler (vendor directory)
+/vendor/
+
 # Archivos de copilot o completions
 /copilot.*
 /.autosave.json

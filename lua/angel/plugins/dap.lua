@@ -12,6 +12,9 @@ return {
   config = function()
     local dap = require("dap")
 
+    -- Suppress deprecation warning for diagnostic signs (upstream issue)
+    vim.g.dap_signs_deprecated = false
+
     -- Teclado / mapeos comunes
     vim.keymap.set("n", "<F5>", dap.continue, { desc = "DAP Continue" })
     vim.keymap.set("n", "<F10>", dap.step_over, { desc = "DAP Step Over" })
@@ -55,7 +58,22 @@ return {
     end
 
     -- NOTE: Language-specific adapters are loaded via lua/angel/plugins/dap/init.lua
-    -- which imports: ruby.lua, python.lua, node.lua, rust.lua
-    -- No need to manually require them here - lazy.nvim handles it through the import system
+    -- which imports: python.lua, node.lua, rust.lua
+    -- Ruby debugging is handled by nvim-ruby-debugger plugin
+    
+    -- Fallback Ruby adapter for plain files (if nvim-ruby-debugger not loaded)
+    if not dap.adapters.ruby then
+      dap.adapters.ruby = function(callback, config)
+        callback({
+          type = "server",
+          host = "127.0.0.1",
+          port = "${port}",
+          executable = {
+            command = "bundle",
+            args = { "exec", "rdbg", "-n", "--open", "--port", "${port}", "-c", "--", config.command, config.script },
+          },
+        })
+      end
+    end
   end,
 }
