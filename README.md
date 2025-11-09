@@ -12,6 +12,7 @@
 - 📖 [Complete User Guide](docs/user-guide/WARP.md) — Setup, commands, architecture
 - 🗺️ [Keymap Registry](docs/user-guide/KEYMAP_REGISTRY.md) — All keymaps reference
 - 🐛 [Troubleshooting](docs/user-guide/TROUBLESHOOTING.md) — Common issues & fixes
+- 🤝 [Contributing Guide](docs/development/CONTRIBUTING.md) — How to contribute
 - 📂 [Documentation Index](docs/README.md) — Full docs catalog
 
 ---
@@ -80,5 +81,16 @@ nvim
 
 ---
 
-**Version:** Phase 4 (Directory Restructure)  
+**Version:** Phase 6 (Final Documentation)  
 **Last Updated:** 2025-11-09
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! See [CONTRIBUTING.md](docs/development/CONTRIBUTING.md) for:
+- Development workflow
+- Coding standards
+- Commit conventions
+- Testing procedures
+- Pull request process

@@ -35,8 +35,11 @@
 - **[PHASE_TRACKING.md](development/PHASE_TRACKING.md)**  
   6-phase normalization project tracking with granular task details
 
-- **CONTRIBUTING.md** *(coming in Phase 6)*  
-  Guidelines for contributing to this configuration
+- **[CONTRIBUTING.md](development/CONTRIBUTING.md)**  
+  Complete contributor guide: workflow, standards, conventions, testing
+  
+- **[PHASE5_API_AUDIT.md](development/PHASE5_API_AUDIT.md)**  
+  API compatibility audit report for Neovim 0.10 and 0.11+ support
 
 ---
 
@@ -80,7 +83,9 @@
 - General → [TROUBLESHOOTING.md](user-guide/TROUBLESHOOTING.md)
 
 ### Development
+- Contributing Guide → [CONTRIBUTING.md](development/CONTRIBUTING.md)
 - Project Status → [PHASE_TRACKING.md](development/PHASE_TRACKING.md)
+- API Compatibility → [PHASE5_API_AUDIT.md](development/PHASE5_API_AUDIT.md)
 - Phase Testing → [testing/](testing/)
 - Known Issues → [investigations/](investigations/)
 
@@ -159,4 +164,4 @@ When adding or modifying documentation:
 ---
 
 **Last Updated:** 2025-11-09  
-**Configuration Version:** Phase 4 (Directory Restructure)
+**Configuration Version:** Phase 6 (Final Documentation)

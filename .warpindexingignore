@@ -1,0 +1,50 @@
+# Warp AI Indexing Ignore File
+# Excludes files/directories from Warp's semantic code search
+
+# Generated files
+lazy-lock.json
+*.swp
+*.swo
+*.bak
+*.tmp
+
+# Git
+.git/
+.gitignore
+
+# Vendor/dependencies (if bundled)
+vendor/
+
+# Logs
+*.log
+*.out
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Test artifacts
+.coverage
+htmlcov/
+
+# Temporary files
+*~
+*.orig
+
+# Build artifacts
+*.o
+*.so
+*.dylib
+
+# IDE-specific
+.idea/
+.vscode/
+*.iml
+
+# Documentation build artifacts
+docs/_build/
+docs/.doctrees/
+
+# Phase testing artifacts (keep guides, exclude temp files)
+docs/testing/**/tmp/
+docs/testing/**/*.log
