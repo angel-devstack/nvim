@@ -43,6 +43,3 @@ opt.title = true
 -- Fold
 opt.foldmethod = "indent" -- indent
 opt.foldlevel = 1
-
--- Compatibilidad netrw
-vim.cmd("let g:netrw_liststyle = 3")

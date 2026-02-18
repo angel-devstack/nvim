@@ -127,25 +127,28 @@ Documento completo de issues encontrados en la auditoría técnica del config de
 
 ## 🔵 MEJORA OPCIONAL
 
-- [ ] **Issue #16: Agregar lazy loading a nvim-scrollbar**
-  - Archivo: `lua/angel/plugins/ui/` (verificar archivo)
-  - Estado: **PENDING**
-  - Problema: No tiene event, cmd, ni keys. Con `lazy = true` por default, probablemente nunca carga
+- [x] **Issue #16: Agregar lazy loading a nvim-scrollbar**
+  - Archivo: `lua/angel/plugins/ui/nvim-scrollbar.lua`
+  - Estado: **DONE**
+  - Problema: No tenía event, cmd, ni keys. Con `lazy = true` por default, probablemente nunca cargaba
   - Solución: Agregar `event = "BufReadPost"`
+  - **Commit:** feat(ui): add lazy loading to nvim-scrollbar
 
-- [ ] **Issue #17: Agregar lazy loading a session-lens**
-  - Archivo: `lua/angel/plugins/misc/session-lens.lua` (o similar)
-  - Estado: **PENDING**
-  - Problema: Sin trigger de lazy loading
-  - Solución: Agregar `cmd` o `keys`, o evaluar si se usa (auto-session ya tiene integración con Telescope)
+- [x] **Issue #17: Evaluar session-lens (decisión: eliminar)**
+  - Archivo: `lua/angel/plugins/misc/session-lens.lua` (ELIMINADO)
+  - Estado: **DONE**
+  - Problema: Sin trigger de lazy loading. Evaluar si se usa (auto-session ya tiene integración con Telescope)
+  - Solución: Eliminar plugin. Auto-session ya tiene integración para Telescope (`:Telescope session-lens search_session`)
+  - **Commit:** fix(bootstrap): remove broken imports, fix obsidian structure
 
-- [ ] **Issue #18: Evaluar vim-mkdir**
-  - Archivo: `lua/angel/plugins/misc/` (verificar archivo)
-  - Estado: **PENDING**
+- [x] **Issue #18: Evaluar vim-mkdir (decisión: eliminar)**
+  - Archivo: `lua/angel/plugins/misc/vim-mkdir.lua` (ELIMINADO)
+  - Estado: **DONE**
   - Problema: Sin trigger de lazy loading — probablemente nunca carga
-  - Solución: Si no se usa, eliminarlo. Si se usa, agregar `event = "BufWritePre"`
+  - Solución: Eliminar plugin (no se usa, mkdir builtin de Neovim es suficiente)
+  - **Commit:** fix(bootstrap): remove broken imports, fix obsidian structure
 
-- [x] **Issue #19: Eliminar redundancia de asistentes AI**
+ - [x] **Issue #19: Eliminar redundancia de asistentes AI**
   - Archivos: Múltiples (tooling AI)
   - Estado: **DONE**
   - Problema: 3 integraciones AI redundantes (gen.nvim, avante.nvim, opencode)
@@ -200,11 +203,11 @@ Documento completo de issues encontrados en la auditoría técnica del config de
 |-----------|-------|------|---------|
 | 🚨 PRIMERA PRIORIDAD | 6 | 6 | 0 |
 | 🟡 PRIORIDAD MEDIA | 9 | 9 | 0 |
-| 🔵 MEJORA OPCIONAL | 6 | 1 | 5 |
+| 🔵 MEJORA OPCIONAL | 6 | 4 | 2 |
 | 🧹 LIMPIEZA ESTÉTICA | 4 | 1 | 3 |
-| **TOTAL** | **25** | **16** | **9** |
+| **TOTAL** | **25** | **20** | **5** |
 
-**Progreso:** 16/25 (64%) ✅
+**Progreso:** 20/25 (80%) ✅
 
 ---
 
