@@ -27,19 +27,25 @@
 - **[TROUBLESHOOTING.md](user-guide/TROUBLESHOOTING.md)**  
   Comprehensive debugging guide for common issues (LSP, Mason, DAP, etc)
 
+### 🌐 Guides
+**In-depth guides for specific features**
+
+- **[LLM_CODING_ASSISTANCE.md](guides/LLM_CODING_ASSISTANCE.md)**  
+  Comprehensive guide for using opencode.nvim AI assistant — workflows, examples, and best practices
+
 ---
 
 ### 🛠️ Development
 **For contributors and maintainers**
 
-- **[PHASE_TRACKING.md](development/PHASE_TRACKING.md)**  
-  6-phase normalization project tracking with granular task details
-
 - **[CONTRIBUTING.md](development/CONTRIBUTING.md)**  
   Complete contributor guide: workflow, standards, conventions, testing
-  
-- **[PHASE5_API_AUDIT.md](development/PHASE5_API_AUDIT.md)**  
-  API compatibility audit report for Neovim 0.10 and 0.11+ support
+
+### 📦 Archive
+**Historical reference - completed phases and legacy documentation**
+
+- **[archive/development/](archive/development/)** — Phase tracking & API audit reports
+- **[archive/testing/](archive/testing/)** — Historical testing guides
 
 ---
 
@@ -48,9 +54,6 @@
 
 - **[DAP_TESTING_GUIDE.md](testing/DAP_TESTING_GUIDE.md)**  
   Comprehensive guide for testing Debug Adapter Protocol (DAP) functionality
-  
-- **[PHASE4_TESTING_GUIDE.md](testing/PHASE4_TESTING_GUIDE.md)**  
-  Testing guide for Phase 4 directory restructure (12 detailed tests)
 
 ---
 
@@ -71,6 +74,7 @@
 
 ### Features
 - **LSP** → [WARP.md § LSP Operations](user-guide/WARP.md#lsp-operations)
+- **LLM/AI** → [LLM_CODING_ASSISTANCE.md](guides/LLM_CODING_ASSISTANCE.md)
 - **Testing** → [WARP.md § Testing](user-guide/WARP.md#testing-with-neotest) | [DAP_TESTING_GUIDE.md](testing/DAP_TESTING_GUIDE.md)
 - **Debugging** → [DAP_TESTING_GUIDE.md](testing/DAP_TESTING_GUIDE.md)
 - **Git** → [WARP.md § Git Operations](user-guide/WARP.md#git-operations)
@@ -84,10 +88,8 @@
 
 ### Development
 - Contributing Guide → [CONTRIBUTING.md](development/CONTRIBUTING.md)
-- Project Status → [PHASE_TRACKING.md](development/PHASE_TRACKING.md)
-- API Compatibility → [PHASE5_API_AUDIT.md](development/PHASE5_API_AUDIT.md)
-- Phase Testing → [testing/](testing/)
 - Known Issues → [investigations/](investigations/)
+- Archive → [archive/](archive/)
 
 ---
 
@@ -99,6 +101,7 @@
 ├── docs/                     # 📚 All documentation (this directory)
 │   ├── README.md            # This file (documentation index)
 │   ├── user-guide/          # User-facing guides
+│   ├── guides/              # In-depth feature guides
 │   ├── development/         # Developer documentation
 │   ├── testing/             # Testing guides
 │   └── investigations/      # Issue investigations
@@ -155,9 +158,10 @@
 When adding or modifying documentation:
 
 1. **User-facing docs** → `user-guide/`
-2. **Development docs** → `development/`
-3. **Testing guides** → `testing/`
-4. **Investigation notes** → `investigations/`
+2. **In-depth guides** → `guides/`
+3. **Development docs** → `development/`
+4. **Testing guides** → `testing/`
+5. **Investigation notes** → `investigations/`
 
 **Always update this index (docs/README.md) when adding new documents.**
 

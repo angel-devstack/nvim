@@ -171,13 +171,13 @@ This document serves as the single source of truth for keymap assignments to pre
 | `<leader>ghd` | Diff this | Show diff | gitsigns.lua |
 | `<leader>ghD` | Diff this ~ | Show diff against ~ | gitsigns.lua |
 
-### Gen.nvim (LLM)
-| Keymap | Action | Description | File |
-|--------|--------|-------------|------|
-| `<leader>g1` | Generate | Generate via LLM | gen.lua |
-| `<leader>g2` | Gen chat | Open Gen chat session | gen.lua |
-
----
+### Opencode.nvim (AI Assistant)
+| Keymap  | Action              | Description           | File |
+|---------|---------------------|-----------------------|------|
+| `<C-a>` | Ask opencode        | Open opencode prompt  | opencode.lua |
+| `<C-x>` | Execute opencode…   | Open action picker    | opencode.lua |
+| `<C-.>` | Toggle opencode     | Start/stop session    | opencode.lua |
+| `ga`    | Add to opencode     | Add selection/context | opencode.lua |
 
 ## 🧪 LEADER PREFIX: `<leader>t*` - TESTING
 
