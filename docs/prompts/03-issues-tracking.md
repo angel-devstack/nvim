@@ -155,45 +155,50 @@ Documento completo de issues encontrados en la auditoría técnica del config de
   - Solución: Mantener solo opencode, eliminar gen.nvim y avante.nvim
   - **Commit:** refactor(tools): remove redundant AI assistants (gen.nvim, avante.nvim)
 
-- [ ] **Issue #20: Agregar event = "InsertEnter" a vim-endwise**
-  - Archivo: `lua/angel/plugins/editing/` (verificar archivo)
-  - Estado: **PENDING**
+- [x] **Issue #20: Agregar event = "InsertEnter" a vim-endwise**
+  - Archivo: `lua/angel/plugins/editing/vim-endwise.lua`
+  - Estado: **DONE**
   - Problema: Actual trigger es `BufReadPre`, menos eficiente
   - Solución: Cambiar a `event = "InsertEnter"` para lazy loading más eficiente
+  - **Commit:** refactor(cleanup): complete issues #20-24, archive phase docs, remove dead code
 
-- [ ] **Issue #21: Eliminar event redundante de substitute.nvim**
-  - Archivo: `lua/angel/plugins/editing/substitute.nvim.lua` (o similar)
-  - Estado: **PENDING**
+ - [x] **Issue #21: Eliminar event redundante de substitute.nvim**
+  - Archivo: `lua/angel/plugins/editing/substitute.lua`
+  - Estado: **DONE**
   - Problema: Tiene `event` y `keys`. Los keys son suficientes, el event es redundante
   - Solución: Eliminar `event` trigger
+  - **Commit:** refactor(cleanup): complete issues #20-24, archive phase docs, remove dead code
 
 ---
 
 ## 🧹 LIMPIEZA ESTÉTICA
 
-- [ ] **Issue #22: Eliminar comentarios de Copilot en keymaps.lua**
+- [x] **Issue #22: Eliminar comentarios de Copilot en keymaps.lua**
   - Archivo: `lua/angel/core/keymaps.lua`
-  - Estado: **PENDING**
-  - Problema: ~16 líneas de keymaps de Copilot comentados (líneas 34-50)
-  - Solución: Eliminar código muerto
+  - Estado: **DONE**
+  - Problema: ~16 líneas de keymaps de Copilot comentados (líneas 34-50), código muerto
+  - Solución: Eliminar código muerto, limpiar comentarios redundantes
+  - **Commit:** refactor(cleanup): complete issues #20-24, archive phase docs, remove dead code
 
-- [ ] **Issue #23: Eliminar g:netrw_liststyle**
+- [x] **Issue #23: Eliminar g:netrw_liststyle**
   - Archivo: `lua/angel/core/options.lua`
-  - Estado: **PENDING**
+  - Estado: **DONE**
   - Problema: netrw está deshabilitado pero g:netrw_liststyle está configurado (código muerto)
   - Solución: Eliminar `vim.g.netrw_liststyle = ...`
+  - **Commit:** refactor(cleanup): complete issues #20-24, archive phase docs, remove dead code
 
-- [ ] **Issue #24: Archivar docs de fases completadas**
-  - Archivos: `docs/development/PHASE_TRACKING.md`, `docs/testing/PHASE4_TESTING.md`, `docs/development/PHASE5_API_AUDIT.md`
-  - Estado: **PENDING**
+- [x] **Issue #24: Archivar docs de fases completadas**
+  - Archivos: `docs/development/PHASE_TRACKING.md`, `docs/testing/PHASE4_TESTING_GUIDE.md`, `docs/development/PHASE5_API_AUDIT.md`
+  - Estado: **DONE**
   - Problema: Docs de fases que ya cumplieron su propósito (no aportan valor activo)
-  - Solución: Mover a `docs/archive/` o eliminar
+  - Solución: Mover a `docs/archive/`
+  - **Commit:** refactor(cleanup): complete issues #20-24, archive phase docs, remove dead code
 
-- [ ] **Issue #25: Unificar default_format_opts y format_on_save en conform.lua**
+- [x] **Issue #25: Unificar default_format_opts y format_on_save en conform.lua**
   - Archivo: `lua/angel/plugins/formatting/conform.lua`
-  - Estado: **PENDING**
-  - Problema: `default_format_opts.timeout_ms = 500` y `format_on_save.timeout_ms = 2000`. El default nunca se usa
-  - Solución: Unificar en uno solo (`format_on_save.timeout_ms = 2000` es el que se usa)
+  - Estado: **DONE**
+  - Problema: Solo existe format_on_save.timeout_ms, no hay default_format_opts redundante
+  - **Commit:** (No se requiere cambio - ya unificado correctamente)
 
 ---
 
@@ -203,11 +208,11 @@ Documento completo de issues encontrados en la auditoría técnica del config de
 |-----------|-------|------|---------|
 | 🚨 PRIMERA PRIORIDAD | 6 | 6 | 0 |
 | 🟡 PRIORIDAD MEDIA | 9 | 9 | 0 |
-| 🔵 MEJORA OPCIONAL | 6 | 4 | 2 |
-| 🧹 LIMPIEZA ESTÉTICA | 4 | 1 | 3 |
-| **TOTAL** | **25** | **20** | **5** |
+| 🔵 MEJORA OPCIONAL | 6 | 6 | 0 |
+| 🧹 LIMPIEZA ESTÉTICA | 4 | 4 | 0 |
+| **TOTAL** | **25** | **25** | **0** |
 
-**Progreso:** 20/25 (80%) ✅
+**Progreso:** 25/25 (100%) ✅ **TODOS LOS ISSUES COMPLETADOS**
 
 ---
 
