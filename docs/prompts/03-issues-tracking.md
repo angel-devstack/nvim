@@ -95,39 +95,33 @@ Documento completo de issues encontrados en la auditoría técnica del config de
   - Solución: Eliminar plugin completamente
   - **Commit:** refactor(tools): remove redundant AI assistants (gen.nvim, avante.nvim)
 
-- [ ] **Issue #12: Eliminar vim.deprecate hack y arreglar warnings reales**
+- [x] **Issue #12: Eliminar vim.deprecate hack y arreglar warnings reales**
   - Archivo: `lua/angel/core/options.lua`
-  - Estado: **PENDING**
+  - Estado: **DONE**
   - Problema: `vim.deprecate = function() end` oculta errores reales cuando plugins usan APIs deprecadas
   - Solución: Eliminar el override. Corregir los warnings que generen los plugins
+  - **Commit:** refactor(core): remove vim.deprecate override
 
-- [ ] **Issue #13: Eliminar override de vim.notify**
+- [x] **Issue #13: Eliminar override de vim.notify**
   - Archivo: `lua/angel/core/init.lua`
-  - Estado: **PENDING**
+  - Estado: **DONE**
   - Problema: Override de `vim.notify` silencia warnings de which-key en vez de arreglar keymaps mal definidos
   - Solución: Eliminar el override. Corregir keymaps que generan warnings
+  - **Commit:** refactor(core): remove vim.notify override
 
-- [ ] **Issue #14: Fix nvim-surround buffer_setup**
-  - Archivo: `lua/angel/plugins/editing/nvim-surround.lua` (crear)
-  - Estado: **PENDING**
+- [x] **Issue #14: Fix nvim-surround buffer_setup**
+  - Archivo: `lua/angel/plugins/editing/nvim-surround.lua`
+  - Estado: **DONE**
   - Problema: `buffer_setup()` se llama en config global, no en autocmd per-buffer. Solo aplica al buffer activo cuando carga
-  - Solución: Usar `FileType` autocmd para que funcione en todos los buffers JS/TS:
-    ```lua
-    require("nvim-surround").buffer_setup({
-      surrounds = {
-        ["$"] = { "$", "$" }, -- math mode in LaTeX, etc
-      },
-    })
-    ```
+  - Solución: Usar `FileType` autocmd para que funcione en todos los buffers JS/TS
+  - **Commit:** fix(editing): move nvim-surround buffer_setup to FileType autocmd
 
-- [ ] **Issue #15: Migrar Python de pylint+isort+black a ruff**
-  - Archivos: `lua/angel/plugins/lsp/mason.lua`, `lua/angel/plugins/formatting/conform.lua`, `lua/angel/plugins/formatting/nlint.lua`
-  - Estado: **PENDING**
+- [x] **Issue #15: Migrar Python de pylint+isort+black a ruff**
+  - Archivos: `lua/angel/plugins/lsp/mason.lua`, `lua/angel/plugins/formatting/conform.lua`, `lua/angel/plugins/formatting/linting.lua`
+  - Estado: **DONE**
   - Problema: pylint es pesado y lento. En 2026, ruff reemplaza pylint, flake8, isort Y black en una sola herramienta (10-100x más rápido)
-  - Solución:
-    - `mason.lua`: Agregar `"ruff"` a ensure_installed
-    - `conform.lua`: Cambiar `python = { "black", "isort" }` → `python = { "ruff_format" }`
-    - `nlint.lua`: Cambiar `python = { "pylint" }` → `python = { "ruff" }`
+  - Solución: Agregar "ruff" a mason_tool_installer, cambiar python formatter y linter a ruff
+  - **Commit:** migrate(python): replace pylint+isort+black with ruff
 
 ---
 
@@ -205,12 +199,12 @@ Documento completo de issues encontrados en la auditoría técnica del config de
 | Categoría | Total | Done | Pending |
 |-----------|-------|------|---------|
 | 🚨 PRIMERA PRIORIDAD | 6 | 6 | 0 |
-| 🟡 PRIORIDAD MEDIA | 9 | 5 | 4 |
+| 🟡 PRIORIDAD MEDIA | 9 | 9 | 0 |
 | 🔵 MEJORA OPCIONAL | 6 | 1 | 5 |
-| 🧹 LIMPIEZA ESTÉTICA | 4 | 0 | 4 |
-| **TOTAL** | **25** | **12** | **13** |
+| 🧹 LIMPIEZA ESTÉTICA | 4 | 1 | 3 |
+| **TOTAL** | **25** | **16** | **9** |
 
-**Progreso:** 12/25 (48%) ✅
+**Progreso:** 16/25 (64%) ✅
 
 ---
 
