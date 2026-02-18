@@ -10,7 +10,7 @@ return {
     -- Define linters por tipo de archivo
     lint.linters_by_ft = {
       ruby = { "rubocop" },
-      python = { "pylint" },
+      python = { "ruff" },
       javascript = { "eslint_d" },
       typescript = { "eslint_d" },
       -- Puedes añadir más filetypes según tu stack

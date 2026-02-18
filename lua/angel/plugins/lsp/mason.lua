@@ -63,13 +63,11 @@ return {
         "stylua",
         "prettier",
         "shfmt",
-        "black",
-        "isort",
         "rubocop",
 
-        -- Linters
+        -- Linters / Formatters
+        "ruff",
         "eslint_d",
-        "pylint",
 
         -- Debuggers
         "debugpy",

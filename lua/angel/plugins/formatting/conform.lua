@@ -14,7 +14,7 @@ return {
         -- Lenguajes comunes
         lua = { "stylua" },
         ruby = { "rubocop" },
-        python = { "isort", "black" },
+        python = { "ruff_format" },
         rust = { "rustfmt" },
         sh = { "shfmt" },
         dockerfile = { "dockfmt" },
@@ -34,11 +34,6 @@ return {
 
         -- Fallback para otros tipos
         ["*"] = { "trim_whitespace" },
-      },
-
-      default_format_opts = {
-        lsp_format = "fallback",
-        timeout_ms = 500,
       },
 
       format_on_save = {
