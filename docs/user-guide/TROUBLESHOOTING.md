@@ -350,6 +350,50 @@ Shows which plugins are slow to load.
 
 ---
 
+### Python Ruff: "ENOENT" Error or Not Found
+
+**Symptom:**
+```
+ERROR: ENOENT: no such file or directory
+Ruff no encontrado - usa virtualenv para instalar ruff
+"ruff" executable not found
+```
+
+**Diagnosis:**
+- Ruff works in terminal after activating venv
+- Neovim can't find Ruff when opened without venv
+- `.venv/bin/ruff` exists but isn't used
+
+**Root Cause:**
+Neovim's PATH doesn't include `.venv/bin/` when venv isn't activated in the shell.
+
+**Solution Built-in (Automatic):**
+The configuration includes automatic Ruff path resolution:
+
+1. Searches upward from current directory for `.venv`
+2. Uses `.venv/bin/ruff` if found and executable
+3. Falls back to global Ruff if available
+4. Non-blocking error if Ruff not found
+
+**Verification:**
+```vim
+:lua print(require('angel.utils.venv').resolve_ruff())
+```
+Should show path to `.venv/bin/ruff` or global `ruff` path.
+
+**Manual Workaround (if automatic doesn't work):**
+```bash
+# Activate venv before opening Neovim
+source .venv/bin/activate
+nvim
+```
+
+**Fix for Future Projects:**
+- Configuration already implements automatic resolution
+- No manual venv activation required after this fix
+
+---
+
 ## 🆘 Getting More Help
 
 ### Useful Commands

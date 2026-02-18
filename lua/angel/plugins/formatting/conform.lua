@@ -6,15 +6,20 @@ return {
   event = { "BufReadPre", "BufNewFile" },
   config = function()
     local conform = require("conform")
+    local venv = require("angel.utils.venv")
 
     local prettier = { "prettier" }
+
+    -- Resolver Ruff path (prioridad .venv/bin/ruff)
+    local ruff_path = venv.resolve_ruff()
+    local ruff_formatter = ruff_path and { ruff_path } or "ruff_format"
 
     conform.setup({
       formatters_by_ft = {
         -- Lenguajes comunes
         lua = { "stylua" },
         ruby = { "rubocop" },
-        python = { "ruff_format" },
+        python = { ruff_formatter }, -- usa resolved path
         rust = { "rustfmt" },
         sh = { "shfmt" },
         dockerfile = { "dockfmt" },
