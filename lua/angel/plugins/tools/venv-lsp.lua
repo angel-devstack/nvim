@@ -6,9 +6,7 @@ return {
   version = "*", -- Use latest version
   dependencies = { "neovim/nvim-lspconfig" },
   config = function()
-    require("venv-lsp").setup({
-      default_venv = nil, -- Don't set default, let it auto-detect
-      search_venv = true,  -- Enable automatic venv detection
-    })
+    -- venv-lsp.nvim config - no manual setup needed
+    -- Plugin automatically handles venv detection when loaded
   end,
 }
