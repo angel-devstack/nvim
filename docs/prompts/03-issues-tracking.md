@@ -58,43 +58,42 @@ Documento completo de issues encontrados en la auditoría técnica del config de
 
 ## 🟡 PRIORIDAD MEDIA
 
-- [ ] **Issue #7: Migrar neodev.nvim → lazydev.nvim**
+- [x] **Issue #7: Migrar neodev.nvim → lazydev.nvim**
   - Archivo: `lua/angel/plugins/lsp/lspconfig.lua`
-  - Estado: **PENDING**
+  - Estado: **DONE**
   - Problema: folke/neodev.nvim está deprecado, reemplazado por folke/lazydev.nvim
   - Solución: Reemplazar `neodev.nvim` dependency por `lazydev.nvim`
-  - Referencia: https://github.com/folke/lazydev.nvim
+  - **Commit:** migrate(lsp): replace neodev.nvim with lazydev.nvim
 
-- [ ] **Issue #8: Eliminar FixCursorHold.nvim**
-  - Archivo: `lua/angel/plugins/testing/neotest.lua`
-  - Estado: **PENDING**
+- [x] **Issue #8: Eliminar FixCursorHold.nvim**
+  - Archivo: `lua/angel/plugins/testing/test-neotest.lua`
+  - Estado: **DONE**
   - Problema: FixCursorHold.nvim era un workaround para un bug en Neovim < 0.10. Ya no es necesario
   - Solución: Eliminar de neotest deps
   - Reemplazo: Nada (built-in fix)
+  - **Commit:** refactor(testing): remove FixCursorHold.nvim and lazy-load neotest
 
-- [ ] **Issue #9: Reemplazar vim-highlightedyank con autocmd built-in**
+- [x] **Issue #9: Reemplazar vim-highlightedyank con autocmd built-in**
   - Archivos: `lua/angel/plugins/misc/`, `lua/angel/core/init.lua`
-  - Estado: **PENDING**
+  - Estado: **DONE**
   - Problema: Neovim 0.5+ tiene `vim.highlight.on_yank()` built-in. Plugin Vimscript es innecesario
-  - Solución: Eliminar plugin, agregar autocmd a core/init.lua:
-    ```lua
-    vim.api.nvim_create_autocmd("TextYankPost", {
-      callback = function() vim.highlight.on_yank({ timeout = 200 }) end,
-    })
-    ```
+  - Solución: Eliminar plugin, agregar autocmd a core/init.lua
+  - **Commit:** refactor(misc): replace vim-highlightedyank with built-in
 
-- [ ] **Issue #10: Cambiar neotest de event a keys/cmd**
-  - Archivo: `lua/angel/plugins/testing/neotest.lua`
-  - Estado: **PENDING**
+- [x] **Issue #10: Cambiar neotest de event a keys/cmd**
+  - Archivo: `lua/angel/plugins/testing/test-neotest.lua`
+  - Estado: **DONE**
   - Problema: `event = { "BufReadPost", "BufNewFile" }` hace que neotest + 4 adaptadores carguen con cada archivo
-  - Solución: Cambiar a `keys` o `cmd = { "Neotest" }` (lazy loading on demand)
+  - Solución: Cambiar a `cmd = { "Neotest" }` y `keys` para lazy loading on demand
   - Beneficio: Mejora startup time significativamente
+  - **Commit:** refactor(testing): remove FixCursorHold.nvim and lazy-load neotest
 
-- [ ] **Issue #11: Sacar lazy = false de avante.nvim**
+- [x] **Issue #11: Eliminar avante.nvim**
   - Archivo: `lua/angel/plugins/tools/avante.lua`
-  - Estado: **PENDING**
-  - Problema: `lazy = false` hace que cargue en startup, ignorando `event = "VeryLazy"`
-  - Solución: Eliminar `lazy = false`. Mantener `event = "VeryLazy"` o cambiar a `keys` on demand
+  - Estado: **DONE**
+  - Problema: AI asistente redundante (solo se usa opencode)
+  - Solución: Eliminar plugin completamente
+  - **Commit:** refactor(tools): remove redundant AI assistants (gen.nvim, avante.nvim)
 
 - [ ] **Issue #12: Eliminar vim.deprecate hack y arreglar warnings reales**
   - Archivo: `lua/angel/core/options.lua`
@@ -152,12 +151,12 @@ Documento completo de issues encontrados en la auditoría técnica del config de
   - Problema: Sin trigger de lazy loading — probablemente nunca carga
   - Solución: Si no se usa, eliminarlo. Si se usa, agregar `event = "BufWritePre"`
 
-- [ ] **Issue #19: Evaluar redundancia de gen.nvim + avante.nvim + opencode**
+- [x] **Issue #19: Eliminar redundancia de asistentes AI**
   - Archivos: Múltiples (tooling AI)
-  - Estado: **PENDING**
-  - Problema: 3 integraciones AI locales puede ser redundante
-  - Solución: Elegir 1-2 principales para mantener
-  - Nota: Requiere decisión del usuario
+  - Estado: **DONE**
+  - Problema: 3 integraciones AI redundantes (gen.nvim, avante.nvim, opencode)
+  - Solución: Mantener solo opencode, eliminar gen.nvim y avante.nvim
+  - **Commit:** refactor(tools): remove redundant AI assistants (gen.nvim, avante.nvim)
 
 - [ ] **Issue #20: Agregar event = "InsertEnter" a vim-endwise**
   - Archivo: `lua/angel/plugins/editing/` (verificar archivo)
@@ -206,12 +205,12 @@ Documento completo de issues encontrados en la auditoría técnica del config de
 | Categoría | Total | Done | Pending |
 |-----------|-------|------|---------|
 | 🚨 PRIMERA PRIORIDAD | 6 | 6 | 0 |
-| 🟡 PRIORIDAD MEDIA | 9 | 0 | 9 |
-| 🔵 MEJORA OPCIONAL | 6 | 0 | 6 |
+| 🟡 PRIORIDAD MEDIA | 9 | 5 | 4 |
+| 🔵 MEJORA OPCIONAL | 6 | 1 | 5 |
 | 🧹 LIMPIEZA ESTÉTICA | 4 | 0 | 4 |
-| **TOTAL** | **25** | **6** | **19** |
+| **TOTAL** | **25** | **12** | **13** |
 
-**Progreso:** 6/25 (24%) ⚠️
+**Progreso:** 12/25 (48%) ✅
 
 ---
 
