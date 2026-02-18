@@ -42,8 +42,8 @@ return {
         "emmet_ls",
         "svelte",
         "tailwindcss",
-        -- "tsserver", -- ← este es el nombre correcto
-        "ts_ls",
+        "tsserver", -- ← este es el nombre correcto
+        -- "ts_ls",
 
         -- Otros
         "graphql",
@@ -52,6 +52,7 @@ return {
         "dockerls",
         "jsonls",
         "yamlls",
+        "shfmt",
       },
     })
 
