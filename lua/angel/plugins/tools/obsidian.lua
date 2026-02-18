@@ -8,11 +8,10 @@ return {
       "nvim-lua/plenary.nvim",
     },
     opts = {
+      ui = {
+        enable = true,
+      },
       workspaces = {
-        {
-          name = "personal",
-          path = "~/Vaults/Harvis",
-        },
         {
           name = "work",
           path = "~/Vaults/Harvis",
@@ -23,5 +22,16 @@ return {
         vim.fn.jobstart({ "open", url })
       end,
     },
+    config = function(_, opts)
+      require("obsidian").setup(opts)
+
+      -- Asegurate de establecer conceallevel correctamente para archivos markdown
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "markdown",
+        callback = function()
+          vim.opt.conceallevel = 2 -- or 1 for more limited animations
+        end,
+      })
+    end,
   },
 }
