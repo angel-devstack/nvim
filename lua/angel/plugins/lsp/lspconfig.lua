@@ -20,18 +20,18 @@ return {
       local keymap = vim.keymap
       local opts = { buffer = bufnr, silent = true }
 
-      keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
-      keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-      keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts)
-      keymap.set("n", "gr", "<cmd>Telescope lsp_references<CR>", opts)
-      keymap.set("n", "K", vim.lsp.buf.hover, opts)
-      keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
-      keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-      keymap.set("n", "<leader>ds", "<cmd>Telescope lsp_document_symbols<CR>", opts)
-      keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts)
-      keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-      keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
-      keymap.set("n", "<leader>rs", "<cmd>LspRestart<CR>", opts)
+      keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", vim.tbl_extend("force", opts, { desc = "Go to definition" }))
+      keymap.set("n", "gD", vim.lsp.buf.declaration, vim.tbl_extend("force", opts, { desc = "Go to declaration" }))
+      keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", vim.tbl_extend("force", opts, { desc = "Go to implementation" }))
+      keymap.set("n", "gr", "<cmd>Telescope lsp_references<CR>", vim.tbl_extend("force", opts, { desc = "Go to references" }))
+      keymap.set("n", "K", vim.lsp.buf.hover, vim.tbl_extend("force", opts, { desc = "Hover documentation" }))
+      keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, vim.tbl_extend("force", opts, { desc = "Code actions" }))
+      keymap.set("n", "<leader>rn", vim.lsp.buf.rename, vim.tbl_extend("force", opts, { desc = "Rename symbol" }))
+      keymap.set("n", "<leader>ds", "<cmd>Telescope lsp_document_symbols<CR>", vim.tbl_extend("force", opts, { desc = "Document symbols" }))
+      keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", vim.tbl_extend("force", opts, { desc = "Buffer diagnostics" }))
+      keymap.set("n", "[d", vim.diagnostic.goto_prev, vim.tbl_extend("force", opts, { desc = "Previous diagnostic" }))
+      keymap.set("n", "]d", vim.diagnostic.goto_next, vim.tbl_extend("force", opts, { desc = "Next diagnostic" }))
+      keymap.set("n", "<leader>rs", "<cmd>LspRestart<CR>", vim.tbl_extend("force", opts, { desc = "Restart LSP" }))
     end
 
     -- =========================================================================
