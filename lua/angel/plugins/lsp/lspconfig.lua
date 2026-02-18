@@ -179,20 +179,6 @@ return {
     end
 
     -- =========================================================================
-    -- 🧬 Apply Bundler/venv hooks (reconfigure Ruby/Python LSPs with project envs)
-    -- =========================================================================
-    -- pcall en caso de que archivos no existan aún durante early boot
-    local bundler_hook_ok, bundler_hook = pcall(require, "angel.plugins.lsp.bundler_hook")
-    if bundler_hook_ok and type(bundler_hook.setup) == "function" then
-      bundler_hook.setup()
-    end
-
-    local python_hook_ok, python_hook = pcall(require, "angel.plugins.lsp.python_venv_hook")
-    if python_hook_ok and type(python_hook.setup) == "function" then
-      python_hook.setup()
-    end
-
-    -- =========================================================================
     -- 🩵 Diagnostic signs with modern API (backward compatible)
     -- =========================================================================
     local signs = {
