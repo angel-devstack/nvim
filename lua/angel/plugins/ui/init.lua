@@ -11,4 +11,5 @@ return {
   { import = "angel.plugins.ui.indent-blankline" },
   { import = "angel.plugins.ui.trouble" },
   { import = "angel.plugins.ui.colorscheme" },
+  { import = "angel.plugins.ui.nvim-scrollbar" },
 }

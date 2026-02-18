@@ -16,7 +16,7 @@ return {
     local nvimtree = require("nvim-tree")
     nvimtree.setup({
       view = {
-        width = 30,
+        width = 40,
         relativenumber = true,
       },
 
