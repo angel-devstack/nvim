@@ -6,7 +6,7 @@ local lazypath = fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   local repository = "https://github.com/folke/lazy.nvim.git"
 
-  fn.system({ "git", "clone", "--filter=blob:none", repo, "--branch=stable", lazypath })
+  fn.system({ "git", "clone", "--filter=blob:none", repository, "--branch=stable", lazypath })
 end
 vim.opt.rtp:prepend(lazypath)
 
@@ -14,9 +14,6 @@ require("lazy").setup({
   -- Plugins por defecto (importa todos los módulos en lua/angel/plugins)
   spec = {
     { import = "angel.plugins" },
-    { import = "angel.plugins.git" },
-    { import = "angel.plugins.lsp" },
-    { import = "angel.plugins.dap" },
   },
 
   -- Control de performance y cheks
