@@ -1,9 +1,16 @@
 return {
   "nvim-neotest/neotest",
-  event = { "BufReadPost", "BufNewFile" },
+  cmd = { "Neotest" },
+  keys = {
+    { "<leader>tt", desc = "🧪 Run test file" },
+    { "<leader>tr", desc = "🧪 Run nearest test" },
+    { "<leader>ta", desc = "🧪 Run all tests" },
+    { "<leader>tS", desc = "🐞 Debug test via DAP" },
+    { "<leader>to", desc = "📤 Show test output" },
+    { "<leader>ts", desc = "📋 Toggle test summary" },
+  },
   dependencies = {
     "nvim-lua/plenary.nvim",
-    "antoinemadec/FixCursorHold.nvim",
     "nvim-neotest/neotest-python",
     "olimorris/neotest-rspec",
     "nvim-neotest/neotest-jest",
