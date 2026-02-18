@@ -52,7 +52,6 @@ return {
         "dockerls",
         "jsonls",
         "yamlls",
-        "shfmt",
       },
     })
 
@@ -64,6 +63,7 @@ return {
         -- Formatters
         "stylua",
         "prettier",
+        "shfmt",
         "black",
         "isort",
         "rubocop",
