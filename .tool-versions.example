@@ -1,0 +1,28 @@
+# asdf Version Control - Project Runtime Management
+#
+# Example .tool-versions file for Neovim development environment
+#
+# This file specifies which runtime versions to use for each language
+# asdf will create symlinks in ~/.asdf/shims/<runtime> pointing to these versions
+#
+# When Neovim (LSPs, formatters) executes commands via these shims:
+#   $ ruby -> uses ~/.asdf/shims/ruby -> ruby 3.3.5
+#   $ python -> uses ~/.asdf/shims/python -> python 3.12.0
+#   $ node -> uses ~/.asdf/shims/node -> node 20.11.0
+#   $ rustc -> uses ~/.asdf/shims/rustc/ rust-stable
+#
+# This ensures CONSISTENT runtime versions across:
+# - Neovim LSP servers
+# - Formatters (rubocop, ruff, prettier, rustfmt)
+# - Terminal commands
+#
+# Install asdf: https://asdf-vm.com/
+
+ruby 3.3.5
+python 3.12.0
+nodejs 20.11.0
+rust stable
+terraform 1.5.7
+ruby
+# golang 1.23 # Alternative for Ruby if needed
+# java openjdk-23 # Alternative for Python if needed
