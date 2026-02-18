@@ -580,18 +580,18 @@ curl http://localhost:11434/api/tags
 
 ---
 
-## 🆚 Comparación con Otras Herramientas de IA
+## 🆚 Comparación con Herramientas de IA Reemplazadas
 
-| Característica                    | opencode.nvim | AI_KEYBINDINGS.md (depreciado) |
-|-----------------------------------|---------------|------------------------------|
-| Desarrollo Activo                 | ✅ Sí (v0.3.0 más reciente) | ❌ No |
-| Conciencia de Contexto           | ✅ Rica (@this, @buffer, etc.) | ⚠️ Limitada |
-| Prompts Personalizados           | ✅ Configurable | ⚠️ Estáticos |
-| Gestión de Sesiones              | ✅ Múltiples sesiones | ⚠️ Limitada |
-| Ediciones en Tiempo Real         | ✅ Recarga buffers auto | ❌ No |
-| Línea de Estado                  | ✅ Soporte nativo | ❌ No |
+| Característica                    | opencode.nvim | gen.nvim + avante.nvim (eliminados) |
+|-----------------------------------|---------------|-------------------------------------|
+| Desarrollo Activo                 | ✅ Sí (v0.3.0) | ⚠️ Varios plugins, dispersos         |
+| Conciencia de Contexto           | ✅ Rica (@this, @buffer, etc.) | ⚠️ Limitada (solo buffer/cursor)       |
+| Prompts Personalizados           | ✅ Configurable | ⚠️ Estáticos (gen.nvim)               |
+| Gestión de Sesiones              | ✅ Múltiples sesiones | ⚠️ Limitada (avante)                   |
+| Ediciones en Tiempo Real         | ✅ Recarga buffers auto | ❌ No                                 |
+| Línea de Estado                  | ✅ Soporte nativo | ❌ No                                 |
 
-**Nota:** Los plugins `gen.nvim` y `avante.nvim` mencionados en esta configuración fueron eliminados en favor de opencode.nvim. Ver el commit: `refactor(tools): remove redundant AI assistants (gen.nvim, avante.nvim)`
+**Nota:** Los plugins `gen.nvim` y `avante.nvim` mencionados en AI_KEYBINDINGS.md (archivado en `docs/archive/`) fueron eliminados en favor de opencode.nvim. Ver commit: `refactor(tools): remove redundant AI assistants (gen.nvim, avante.nvim)`
 
 ---
 
