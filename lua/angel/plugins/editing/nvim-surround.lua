@@ -1,6 +1,14 @@
 return {
   "kylechui/nvim-surround",
-  event = { "BufReadPre", "BufNewFile" },
+  keys = {
+    { "ys", mode = "n", desc = "Surround" },
+    { "yss", mode = "n", desc = "Surround line" },
+    { "yS", mode = "n", desc = "Surround line (newline)" },
+    { "S", mode = "v", desc = "Surround selection" },
+    { "gS", mode = "v", desc = "Surround lines" },
+    { "ds", mode = "n", desc = "Delete surround" },
+    { "cs", mode = "n", desc = "Change surround" },
+  },
   version = "*",
   config = function()
     require("nvim-surround").setup({
@@ -15,17 +23,22 @@ return {
       },
     })
 
-    -- configuración adicional por buffer, por ejemplo, para agregar ${...}
-    require("nvim-surround").buffer_setup({
-      surrounds = {
-        ["$"] = {
-          add = function()
-            return { "${", "}" }
-          end,
-          find = "%${.-}", -- busca el patrón `${...}`
-          delete = "^(%${)().-(})()$", -- cómo borrarlo
-        },
-      },
+    -- Configuración adicional por buffer para JS/TS (${...} syntax)
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = { "javascript", "typescript", "javascriptreact", "typescriptreact" },
+      callback = function()
+        require("nvim-surround").buffer_setup({
+          surrounds = {
+            ["$"] = {
+              add = function()
+                return { "${", "}" }
+              end,
+              find = "%${.-}", -- busca el patrón `${...}`
+              delete = "^(%${)().-(})()$", -- cómo borrarlo
+            },
+          },
+        })
+      end,
     })
   end,
 }
