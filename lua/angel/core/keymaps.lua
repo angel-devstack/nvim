@@ -2,6 +2,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 local keymap = vim.keymap -- for conciseness
+local path_utils = require("angel.utils.path")
 
 keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
 
@@ -68,3 +69,6 @@ keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<CR>", { desc = "Live Gre
 
 -- Git: Estado rápido con Neogit
 keymap.set("n", "<leader>gs", "<cmd>Neogit<CR>", { desc = "Neogit Status" })
+
+-- Clipboard / Paths
+keymap.set("n", "<leader>cu", path_utils.copy_absolute_file_url, { desc = "Copy absolute file URL to clipboard" })
