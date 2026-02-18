@@ -271,14 +271,67 @@ npm install --save-dev jest
 cargo test  # built-in
 ```
 
-## Local LLM Setup (gen.nvim)
+## Local LLM Setup
 
-The configuration includes `gen.nvim` for local LLM integration via Ollama.
+The configuration includes two options for local LLM integration via Ollama:
+
+### avante.nvim (Recommended)
+
+Modern AI-powered coding assistant with split panel interface similar to Cursor/Copilot Chat.
+
+**Features:**
+- Split panel interface for AI chat
+- Code generation and editing with diff view
+- Context-aware suggestions
+- Multi-turn conversations
+- Image support (via img-clip.nvim)
+- Markdown rendering with syntax highlighting
+
+**Commands:**
+- `<leader>aa` — open AI chat panel (works in normal and visual mode)
+- `<leader>ac` — start new conversation (limpia contexto anterior)
+- `<leader>at` — toggle sidebar
+- `<leader>ar` — refresh current chat
+- `<leader>aX` — clear all history (útil si mantiene conversaciones antiguas)
+- `:AvanteAsk` — open AI chat panel (alternativa al keybinding)
+
+**Keybindings (in chat):**
+- `<CR>` (normal) / `<C-s>` (insert) — submit prompt
+- `co` / `ct` / `ca` / `cb` / `cc` — diff operations (ours/theirs/all/both/cursor)
+- `]x` / `[x` — next/previous diff hunk
+- `]]` / `[[` — jump to next/previous code block
+
+**Flujo recomendado para refactorizar:**
+1. Abre el archivo que quieres refactorizar
+2. NO selecciones nada (avante tiene problemas con selección de archivos)
+3. Presiona `<leader>aa`
+4. En el panel de chat, pega el código manualmente o escribe tu pregunta
+5. Para nueva conversación sin contexto previo: `<leader>ac`
+6. Para limpiar todo el historial: `<leader>aX`
+
+### gen.nvim (Más simple y directo)
+
+Integración ligera con ventana flotante. **Recomendado para refactorizar código rápidamente.**
+
+**Flujo recomendado:**
+1. Abre el archivo que quieres refactorizar
+2. **Selecciona el código en modo visual** (`V` para líneas completas)
+3. Presiona uno de estos comandos:
+   - `<leader>ge` — refactorizar/mejorar código seleccionado
+   - `<leader>gr` — revisar código (encuentra bugs y mejoras)
+   - `:Gen Explain_Code` — explicar qué hace el código
+4. Espera respuesta en panel flotante
+
+**Otros comandos:**
+- `<leader>g1` — generate via LLM (funciona en normal y visual)
+- `<leader>g2` — Gen chat session
+- `<leader>gm` — seleccionar modelo Ollama
 
 ### Recommended Models
 
+- **Code generation (3B)**: `qwen2.5-coder:3b` (fast, low memory)
+- **Code generation (7B+)**: `deepseek-coder-v2:16b-lite`
 - **General purpose**: `llama3:8b`
-- **Code generation**: `deepseek-coder-v2:16b-lite`
 
 ### Environment Variables
 
@@ -288,13 +341,8 @@ Add to your shell config (`~/.zshrc`, `~/.bashrc`):
 export OLLAMA_SERVER="127.0.0.1"
 export OLLAMA_PORT="11434"
 export OLLAMA_HOST="${OLLAMA_SERVER}:${OLLAMA_PORT}"
-export LLM_MODEL="llama3:8b"
+export LLM_MODEL="qwen2.5-coder:3b"  # or your preferred model
 ```
-
-### Usage
-
-- `<leader>g1` — generate via LLM
-- `<leader>g2` — open Gen chat session
 
 ### Setup Ollama
 
@@ -302,11 +350,25 @@ export LLM_MODEL="llama3:8b"
 # Install Ollama
 brew install ollama
 
-# Start server
+# Start server (in separate terminal or background)
 ollama serve
 
-# Pull model
-ollama pull llama3:8b
+# Pull models
+ollama pull qwen2.5-coder:3b     # fast, 1.9GB
+ollama pull llama3:8b             # general purpose, 4.7GB
+ollama pull deepseek-coder-v2:16b # advanced coding, ~9GB
+
+# Verify Ollama is running
+curl http://localhost:11434/api/tags
+```
+
+### First Run Setup (avante.nvim)
+
+After adding avante.nvim, run:
+
+```vim
+:Lazy sync          " Install avante and dependencies
+:Lazy build avante.nvim  " Build native components (requires make)
 ```
 
 ## Troubleshooting

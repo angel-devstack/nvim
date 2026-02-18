@@ -59,6 +59,8 @@ This document serves as the single source of truth for keymap assignments to pre
 | `s` | Substitute with motion | substitute.lua | substitute.nvim |
 | `ss` | Substitute line | substitute.lua | substitute.nvim |
 | `S` | Substitute to EOL | substitute.lua | substitute.nvim |
+| `cu` | Copy absolute file URL to clipboard | core/utils/path | custom util |
+
 
 ### Function Keys (DAP)
 | Keymap | Action | File | Plugin |
@@ -334,6 +336,6 @@ grep -r "keymap.set.*<leader>" lua/angel/
 
 ---
 
-**Last Updated:** 2025-11-09  
-**Maintained by:** Phase 2 - Keymap Registry  
+**Last Updated:** 2025-11-09
+**Maintained by:** Phase 2 - Keymap Registry
 **Related:** See `WARP.md` for usage guide, `PHASE_TRACKING.md` for project progress
