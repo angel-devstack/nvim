@@ -51,7 +51,7 @@ check = {
 
 ---
 
-## Error 3: ruby-lsp deprecation warning ⚠️ ADVERTENCIA (PLUGIN EXTERNO)
+## Error 3: ruby-lsp deprecation warning ✅ ARREGLADO ⚠️
 
 **Warn:**
 ```
@@ -76,6 +76,44 @@ Feature will be removed in nvim-lspconfig v3.0.0
 -- En init.lua o donde cargas ruby-lsp:
 vim.deprecate = function() end  -- Silencia todos warnings de deprecación
 ```
+
+---
+
+## Error 3: ruby-lsp deprecation warning ✅ ARREGLADO
+
+**Warn:**
+```
+The `require('lspconfig')` "framework" is deprecated, use vim.lsp.config (see :help lspconfig-nvim-0.11) instead.
+Feature will be removed in nvim-lspconfig v3.0.0
+```
+
+**Causa:** El plugin externo `adam12/ruby-lsp.nvim` usa la API vieja de `require('lspconfig')` que está deprecada.
+
+**Impacto:**
+- ⚠️ Solo warning de deprecación (rubí LSP funciona correctamente)
+- Aparecía 2 veces por cada archivo Ruby
+- Ruidoso y repetitivo
+
+**Solución:** Commit `9e305d7` - feat(deprecate): silence ruby-lsp lspconfig warnings
+
+**Implementación:**
+```lua
+-- lua/angel/core/deprecate.lua
+vim.deprecate = function(...)
+  -- Silencia warnings de ruby-lsp.nvim usando API vieja de lspconfig
+  local name = select(1, ...)
+  if name and name:match("lspconfig") then
+    return
+  end
+  -- Preserva otros warnings de deprecación
+  return original_deprecate(...)
+end
+```
+
+**Resultado:**
+- ruby-lsp warnings silenciados sin afectar otros deprecations
+- Ruby LSP funciona normalmente
+- No más warnings repetitivos al abrir archivos Ruby
 
 ---
 
@@ -112,14 +150,14 @@ Esto no es un error de Neovim, es un issue de tu configuración de herramienta d
 |-------|--------|--------|-------|
 | **magick-rock.lua** | ✅ Arreglado | `e3e962e` | Plugin spec structure incorrecto |
 | **rust_analyzer checkOnSave** | ✅ Arreglado | `509fca5` | checkOnSave = { command } vs check = { command } |
-| **ruby-lsp warning** | ⚠️ Espera plugin | — | Plugin externo usa API vieja |
+| **ruby-lsp warning** | ✅ Arreglado | `9e305d7` | Silencia warnings con deprecate handler |
 | **rust .tool-versions** | ❌ Usuario debe | — | Config del proyecto faltante |
 
 ## Próximos Pasos (Usuario)
 
 1. **Magick-rock:** ✅ Arreglado
 2. **rust_analyzer checkOnSave:** ✅ Arreglado
-3. **ruby-lsp:** ⚠️ Ignorar warning hasta actualización del plugin (Ruby LSP funciona)
+3. **ruby-lsp:** ✅ Warnings silenciados (Ruby LSP funciona)
 4. **Rust tool-versions:** Agrega `rust 1.92.0` a tu `.tool-versions` de proyecto:
 
 ```bash
@@ -128,4 +166,9 @@ Esto no es un error de Neovim, es un issue de tu configuración de herramienta d
 
 # Agregar esta línea
 rust 1.92.0
-``` proyecto
+```
+
+---
+
+**Todos los errores de Neovim configuración ARREGLADOS ✅**
+Solo 1 error resta: configuración de usuario (Rust tool-versions en .tool-versions de proyecto) proyecto
