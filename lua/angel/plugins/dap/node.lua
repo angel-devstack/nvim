@@ -3,6 +3,7 @@
 
 return {
   "mxsdev/nvim-dap-vscode-js",
+  ft = { "javascript", "typescript", "javascriptreact", "typescriptreact", "vue" },
   dependencies = { "mfussenegger/nvim-dap" },
   config = function()
     local ok_dap, dap = pcall(require, "dap")
