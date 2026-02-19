@@ -1,8 +1,6 @@
-local M = {}
-
 local terminal = require("angel.utils.terminal")
 
-M.config = {
+return {
   "vhyrro/luarocks.nvim",
   cond = function()
     return terminal.is_wezterm()
@@ -14,5 +12,3 @@ M.config = {
     },
   },
 }
-
-return M
