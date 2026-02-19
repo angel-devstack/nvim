@@ -1,6 +1,8 @@
+local terminal = require("angel.utils.terminal")
+
 return {
   "MeanderingProgrammer/render-markdown.nvim",
-  event = "BufReadPre",
+  event = "VeryLazy",
   ft = { "markdown", "vimwiki" },
   dependencies = {
     "nvim-treesitter/nvim-treesitter",
@@ -11,15 +13,13 @@ return {
     file_types = { "markdown", "vimwiki" },
     render_modes = true,
 
-    -- 🔥 ESTA ES LA PARTE CLAVE: activar Mermaid
     mermaid = {
-      enabled = true,
+      enabled = terminal.is_wezterm(),
       render_options = {
-        theme = "default", -- podés elegir: default / dark / neutral
+        theme = "default",
       },
     },
 
-    -- opcional, pero recomendable
     code = {
       enabled = true,
     },
