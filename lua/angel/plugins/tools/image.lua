@@ -1,7 +1,9 @@
+local terminal = require("angel.utils.terminal")
+
 return {
   "3rd/image.nvim",
   cond = function()
-    return vim.env.TERM_PROGRAM == "WezTerm"
+    return terminal.is_wezterm()
   end,
   opts = {
     backend = "kitty", -- wezterm y kitty comparten el protocolo gráfico

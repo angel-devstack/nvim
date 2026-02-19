@@ -1,10 +1,18 @@
-return {
+local M = {}
+
+local terminal = require("angel.utils.terminal")
+
+M.config = {
   "vhyrro/luarocks.nvim",
-  priority = 1001, -- 🧱 Se carga primero para asegurar que los módulos estén disponibles
-  lazy = false, -- ⚠️ Importante: debe cargarse al inicio, no bajo demanda
+  cond = function()
+    return terminal.is_wezterm()
+  end,
+  priority = 1001,
   opts = {
     rocks = {
-      "magick", -- 📦 Paquete necesario para image.nvim, por ejemplo
+      "magick",
     },
   },
 }
+
+return M
