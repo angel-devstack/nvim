@@ -1,20 +1,20 @@
 return {
   "rmagatti/auto-session",
-  event = "VimLeavePre", -- opcional: carga más inteligentemente
+  event = "VeryLazy",
   config = function()
     local auto_session = require("auto-session")
 
     auto_session.setup({
-      log_level = "error", -- menos ruido
+      log_level = "error",
       auto_save_enabled = true,
       auto_restore_enabled = true,
       auto_session_suppress_dirs = {
-        "~/", -- home
+        "~",
         "~/Downloads",
         "~/Documents",
         "~/Desktop",
-        "~/Dev", -- ignora raíz de proyectos grandes
-        "/tmp", -- sesiones temporales
+        "~/Dev",
+        "/tmp",
       },
       session_lens = {
         load_on_setup = false,
