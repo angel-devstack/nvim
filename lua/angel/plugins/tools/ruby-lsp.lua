@@ -3,10 +3,11 @@
 
 return {
   "adam12/ruby-lsp.nvim",
+  ft = { "ruby", "eruby" },
   version = "*",
   dependencies = {
     "nvim-lua/plenary.nvim",
     "neovim/nvim-lspconfig",
   },
-  config = true, -- Auto-configs lspconfig with ruby-lsp server
+  config = true,
 }
