@@ -5,5 +5,4 @@ return {
   { import = "angel.plugins.misc.auto-session" },
   { import = "angel.plugins.misc.vim-maximizer" },
   { import = "angel.plugins.misc.sort" },
-  { import = "angel.plugins.misc.tabular" },
 }

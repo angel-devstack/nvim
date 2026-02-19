@@ -8,4 +8,5 @@ return {
   { import = "angel.plugins.editing.substitute" },
   { import = "angel.plugins.editing.splitjoin" },
   { import = "angel.plugins.editing.vim-endwise" },
+  { import = "angel.plugins.editing.mini-align" },
 }
