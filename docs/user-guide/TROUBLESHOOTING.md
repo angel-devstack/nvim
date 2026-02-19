@@ -97,12 +97,47 @@ Could not load plugin: <plugin-name>
    ```
 
 3. **Check lazy-lock.json:**
-   - Ensure it's committed and up to date
-   - Delete it and run `:Lazy restore` to regenerate
+    - Ensure it's committed and up to date
+    - Delete it and run `:Lazy restore` to regenerate
 
 4. **Check for typos in plugin specs:**
-   - Review `lua/angel/plugins/` files for syntax errors
-   - Look for missing commas, quotes, or brackets
+    - Review `lua/angel/plugins/` files for syntax errors
+    - Look for missing commas, quotes, or brackets
+
+---
+
+### Conform Formatter: nested {} Syntax Error
+
+**Symptom:**
+```
+conform.nvim ... The nested {} syntax to run the first formatter has been replaced by the stop_after_first option
+Formatting failed on BufWritePre
+```
+
+**Diagnosis:**
+- Nested table syntax like `{{ "formatter1", "formatter2" }}` is deprecated
+- Conform expects flat formatter lists with `stop_after_first = true`
+
+**Root Cause:**
+Breaking change in conform.nvim: old pattern `python = { { "ruff_format", "black" } }` changed to new pattern:
+```lua
+python = { "ruff_format", "black" }
+stop_after_first = true
+```
+
+**Current Config Status (Fixed):**
+Configuration uses flat formatter lists:
+```lua
+python = { ruff_formatter },  -- ruff_formatter is path or command name
+```
+No nested arrays present.
+
+**Verification:**
+```vim
+" Run conform format manually
+:lua require('conform').format()
+```
+Should succeed without nested array error.
 
 ---
 

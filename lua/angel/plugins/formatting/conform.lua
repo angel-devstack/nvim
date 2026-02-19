@@ -10,16 +10,18 @@ return {
 
     local prettier = { "prettier" }
 
-    -- Resolver Ruff path (prioridad .venv/bin/ruff)
+    -- Configurar ruff_format formatter para usar el path resuelto (.venv si existe)
     local ruff_path = venv.resolve_ruff()
-    local ruff_formatter = ruff_path and { ruff_path } or "ruff_format"
+    if ruff_path then
+      conform.formatters.ruff_format = { command = ruff_path }
+    end
 
     conform.setup({
       formatters_by_ft = {
         -- Lenguajes comunes
         lua = { "stylua" },
         ruby = { "rubocop" },
-        python = { ruff_formatter }, -- usa resolved path
+        python = { "ruff_format" },
         rust = { "rustfmt" },
         sh = { "shfmt" },
         dockerfile = { "dockfmt" },
