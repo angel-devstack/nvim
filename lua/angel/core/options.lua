@@ -36,3 +36,6 @@ opt.title = true
 
 opt.foldmethod = "indent"
 opt.foldlevel = 1
+
+opt.mouse = "a"
+opt.colorcolumn = "80,100"
