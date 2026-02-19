@@ -1,8 +1,15 @@
 return {
   "NickvanDyke/opencode.nvim",
+  event = "VeryLazy",
+  keys = {
+    { "<C-a>", mode = { "n", "x" }, desc = "Ask opencode" },
+    { "<C-x>", mode = { "n", "x" }, desc = "Execute opencode action" },
+    { "ga", desc = "Add to opencode" },
+    { "<C-.>", mode = { "n", "t" }, desc = "Toggle opencode" },
+    { "<S-C-u>", mode = "n", desc = "opencode half page up" },
+    { "<S-C-d>", mode = "n", desc = "opencode half page down" },
+  },
   dependencies = {
-    -- Recommended for `ask()` and `select()`.
-    -- Required for default `toggle()` implementation.
     { "folke/snacks.nvim", opts = { input = {}, picker = {}, terminal = {} } },
   },
   config = function()
@@ -37,7 +44,7 @@ return {
     -- The plugin suggests remapping + and - as alternatives, but we keep the
     -- standard Vim behavior. Use <leader>+ and <leader>- (from core/keymaps.lua)
     -- if you need increment/decrement while using opencode.
-    -- 
+    --
     -- Uncomment these if you prefer + and - for increment/decrement:
     -- vim.keymap.set("n", "+", "<C-a>", { desc = "Increment", noremap = true })
     -- vim.keymap.set("n", "-", "<C-x>", { desc = "Decrement", noremap = true })
