@@ -20,6 +20,13 @@ return {
 
     telescope.setup({
       defaults = {
+        -- Desactivar tree-sitter en previews para evitar error ft_to_lang nil
+        preview = {
+          treesitter = false,
+        },
+        file_previewer = require("telescope.previewers").vim_buffer_cat.new,
+        grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
+        qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
         path_display = { "smart" },
         sorting_strategy = "ascending",
         layout_strategy = "horizontal",
