@@ -3,7 +3,7 @@
 
 return {
   "mfussenegger/nvim-dap",
-  event = { "BufReadPre", "BufNewFile" },
+  event = "VeryLazy",
   dependencies = {
     { "nvim-neotest/nvim-nio" },
     { "rcarriga/nvim-dap-ui", config = true },
@@ -15,11 +15,11 @@ return {
     -- Suppress deprecation warning for diagnostic signs (upstream issue)
     vim.g.dap_signs_deprecated = false
 
-    -- Teclado / mapeos comunes
-    vim.keymap.set("n", "<F5>", dap.continue, { desc = "DAP Continue" })
-    vim.keymap.set("n", "<F10>", dap.step_over, { desc = "DAP Step Over" })
-    vim.keymap.set("n", "<F11>", dap.step_into, { desc = "DAP Step Into" })
-    vim.keymap.set("n", "<F12>", dap.step_out, { desc = "DAP Step Out" })
+    -- DAP keymaps (mnemónico <leader>d*)
+    vim.keymap.set("n", "<leader>dc", dap.continue, { desc = "DAP Continue" })
+    vim.keymap.set("n", "<leader>ds", dap.step_over, { desc = "DAP Step Over" })
+    vim.keymap.set("n", "<leader>di", dap.step_into, { desc = "DAP Step Into" })
+    vim.keymap.set("n", "<leader>do", dap.step_out, { desc = "DAP Step Out" })
     vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint, { desc = "DAP Toggle Breakpoint" })
     vim.keymap.set("n", "<leader>dr", dap.repl.open, { desc = "DAP REPL Open" })
     vim.keymap.set("n", "<leader>dl", dap.run_last, { desc = "DAP Run Last" })
@@ -60,7 +60,7 @@ return {
     -- NOTE: Language-specific adapters are loaded via lua/angel/plugins/dap/init.lua
     -- which imports: python.lua, node.lua, rust.lua
     -- Ruby debugging is handled by nvim-ruby-debugger plugin
-    
+
     -- Fallback Ruby adapter for plain files (if nvim-ruby-debugger not loaded)
     if not dap.adapters.ruby then
       dap.adapters.ruby = function(callback, config)
