@@ -3,7 +3,8 @@
 
 return {
   "jglasovic/venv-lsp.nvim",
-  version = "*", -- Use latest version
+  ft = { "python" },
+  version = "*",
   dependencies = { "neovim/nvim-lspconfig" },
   config = function()
     -- venv-lsp.nvim config - no manual setup needed
