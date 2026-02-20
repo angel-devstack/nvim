@@ -7,6 +7,7 @@ return {
   config = function()
     local conform = require("conform")
     local venv = require("angel.utils.venv")
+    local asdf = require("angel.utils.asdf")
 
     local prettier = { "prettier" }
 
@@ -14,6 +15,30 @@ return {
     local ruff_path = venv.resolve_ruff()
     if ruff_path then
       conform.formatters.ruff_format = { command = ruff_path }
+    end
+
+    -- Configurar forge formatter para usar el path resuelto de ASDF
+    local forge_path = asdf.resolve_forge()
+    if forge_path then
+      conform.formatters.forge_fmt = { command = forge_path }
+    end
+
+    -- Resolver formatter de Solidity basado en tipo de proyecto
+    local function resolve_solidity_formatter()
+      local project_type = asdf.detect_project_type()
+
+      if project_type == "foundry" then
+        return { "forge_fmt" }
+      elseif project_type == "hardhat" then
+        return { "prettier", "prettier-plugin-solidity" }
+      else
+        -- Fallback a forge si está disponible, si no prettier
+        if forge_path then
+          return { "forge_fmt" }
+        else
+          return { "prettier" }
+        end
+      end
     end
 
     conform.setup({
@@ -25,6 +50,9 @@ return {
         rust = { "rustfmt" },
         sh = { "shfmt" },
         dockerfile = { "dockfmt" },
+
+        -- Solidity (detectar Foundry vs Hardhat automáticamente)
+        solidity = resolve_solidity_formatter(),
 
         -- Web / Frontend
         javascript = prettier,
