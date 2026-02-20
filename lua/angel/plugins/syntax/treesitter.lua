@@ -48,6 +48,7 @@ return {
         "rust",
         "bicep",
         "http",
+        "solidity",
       },
       incremental_selection = {
         enable = true,
