@@ -12,6 +12,7 @@ return {
 
   config = function()
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
+    local asdf = require("angel.utils.asdf")
 
     -- =========================================================================
     -- 🧠 Función on_attach: define keymaps comunes
@@ -156,6 +157,12 @@ return {
         },
       },
       ts_ls = {}, -- para JS/TS
+      solidity_ls = {
+        cmd = { asdf.resolve_solidity_lsp() or "nomicfoundation-solidity-language-server", "--stdio" },
+        filetypes = { "solidity" },
+        root_dir = require("lspconfig.util").find_git_ancestor,
+        single_file_support = true,
+      },
     }
 
     -- =========================================================================
